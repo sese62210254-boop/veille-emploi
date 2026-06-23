@@ -1,0 +1,22 @@
+name: veille_emploi
+description: Application mobile pour la recherche d'emploi au Bénin.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  supabase_flutter: ^2.5.0
+  url_launcher: ^6.2.5
+  intl: ^0.19.0
+  timeago: ^3.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
