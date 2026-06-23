@@ -40,17 +40,41 @@ def scrape_generic(db: Database, source: dict) -> int:
                     emp_tag = offre.select_one(selectors['company'])
                     if emp_tag: entreprise = emp_tag.text.strip()
                 
-                resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
+                # NETTOYAGE INTELLIGENT DU RÉSUMÉ
+                # On essaie d'abord de prendre les paragraphes (souvent la vraie description)
+                paragraphs = offre.find_all('p')
+                if paragraphs:
+                    resume_text = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20])
+                else:
+                    resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
+                
                 # On nettoie les espaces multiples
                 resume_text = ' '.join(resume_text.split())
-                resume = f"{entreprise} | {resume_text[:120]}..."
+                
+                # On enlève le titre s'il est au début du résumé pour éviter la répétition
+                if resume_text.startswith(titre):
+                    resume_text = resume_text[len(titre):].strip()
+                    
+                resume = f"{resume_text[:200]}..." if len(resume_text) > 200 else resume_text
+                
+                # AUTO-CATÉGORISATION
+                texte_complet = (titre + " " + resume).lower()
+                type_opp = source['category']
+                if 'stage' in texte_complet or 'stagiaire' in texte_complet:
+                    type_opp = 'Stage'
+                elif 'bourse' in texte_complet or 'scholarship' in texte_complet:
+                    type_opp = 'Bourse'
+                elif 'concours' in texte_complet:
+                    type_opp = 'Concours'
+                elif 'emploi' in texte_complet or 'recrute' in texte_complet:
+                    type_opp = 'Emploi'
                 
                 added = db.add_opportunity(
                     titre=titre[:100],
                     lien=lien,
-                    resume=resume[:150],
+                    resume=resume,
                     source=source['name'],
-                    type_opp=source['category'],
+                    type_opp=type_opp,
                     date_limite="Voir sur le site"
                 )
                 if added: count += 1
