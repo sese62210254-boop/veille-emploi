@@ -34,6 +34,9 @@ jobs:
         # Correction de compatibilité Android
         sed -i 's/flutter.minSdkVersion/21/g' android/app/build.gradle
         
+        # AJOUT DE L'AUTORISATION INTERNET (Pour corriger votre erreur)
+        sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET" />' android/app/src/main/AndroidManifest.xml
+        
         flutter pub get
         flutter build apk --release
 
