@@ -1,0 +1,266 @@
+[
+    {
+        "name": "JobBenin",
+        "url": "https://jobbenin.com/offres",
+        "category": "Emploi",
+        "selectors": {
+            "container": ".job-bx",
+            "title": "h4 a",
+            "company": ".company-name",
+            "link": "h4 a"
+        }
+    },
+    {
+        "name": "EmploiBenin",
+        "url": "https://www.emploibenin.com/recherche-jobs-benin",
+        "category": "Emploi",
+        "selectors": {
+            "container": ".card-job",
+            "title": "h3 a",
+            "company": "a.card-job-company",
+            "link": "h3 a"
+        }
+    },
+    {
+        "name": "GreatYop (Bourses)",
+        "url": "https://greatyop.com/bourses/",
+        "category": "Bourse",
+        "selectors": {
+            "container": "article.type-post",
+            "title": "h1.entry-title a, h2.entry-title a, h1.entry-title",
+            "company": "",
+            "link": "h1.entry-title a, h2.entry-title a"
+        }
+    },
+    {
+        "name": "Ministère Travail Bénin",
+        "url": "https://travail.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article",
+            "title": "h2 a",
+            "company": "",
+            "link": "h2 a"
+        }
+    },
+    {
+        "name": "UN Jobs Cotonou",
+        "url": "https://unjobs.org/duty_stations/coo",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job[id]",
+            "title": "a.jtitle",
+            "company": "",
+            "link": "a.jtitle"
+        }
+    },
+    {
+        "name": "Talents Plus Afrique",
+        "url": "https://www.talentsplusafrique.com/jns/index.php/offres-d-emploi.html",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.carousel-item div.row > div",
+            "title": "a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Anpe",
+        "url": "https://anpe.bj/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.ue_post_carousel_item",
+            "title": "div.uc_post_title",
+            "company": "",
+            "link": "a.uc_more_btn"
+        }
+    },
+    {
+        "name": "Jobbenin",
+        "url": "https://www.jobbenin.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-bx",
+            "title": "div.job-contant h4 a",
+            "company": "",
+            "link": "div.job-contant h4 a"
+        }
+    },
+    {
+        "name": "Novojob",
+        "url": "https://www.novojob.com/benin/offres-d-emploi",
+        "category": "Emploi",
+        "selectors": {
+            "container": "li.separator-bot",
+            "title": "h2.ellipsis",
+            "company": ".contact h6 span",
+            "link": ".bloc-right > .row-fluid > a"
+        }
+    },
+    {
+        "name": "Talentsplusafrique",
+        "url": "https://www.talentsplusafrique.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.card-formation",
+            "title": "div.text",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Beninemploiplus",
+        "url": "https://beninemploiplus.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "",
+            "title": "",
+            "company": "",
+            "link": ""
+        }
+    },
+    {
+        "name": "Travail",
+        "url": "https://travail.gouv.bj/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div#pills-home > div.rounded",
+            "title": "p",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Psie",
+        "url": "https://psie.bj/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "",
+            "title": "",
+            "company": "",
+            "link": ""
+        }
+    },
+    {
+        "name": "Cdiscussion",
+        "url": "https://www.cdiscussion.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.study-card",
+            "title": "h5",
+            "company": "",
+            "link": "a.stretched-link"
+        }
+    },
+    {
+        "name": "Wiijob",
+        "url": "https://wiijob.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.elementor-image-box-wrapper",
+            "title": "h3.elementor-image-box-title a",
+            "company": "",
+            "link": "h3.elementor-image-box-title a"
+        }
+    },
+    {
+        "name": "Emploiburkina",
+        "url": "https://www.emploiburkina.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.last-offers-item",
+            "title": "h3 a",
+            "company": ".job-recruiter strong",
+            "link": "h3 a"
+        }
+    },
+    {
+        "name": "Novojob",
+        "url": "https://www.novojob.com/cote-d-ivoire/offres-d-emploi",
+        "category": "Emploi",
+        "selectors": {
+            "container": "li.separator-bot",
+            "title": "h2.ellipsis",
+            "company": "div.contact h6",
+            "link": "div.row-fluid > a"
+        }
+    },
+    {
+        "name": "Novojob",
+        "url": "https://www.novojob.com/senegal/offres-d-emploi",
+        "category": "Emploi",
+        "selectors": {
+            "container": "li.separator-bot",
+            "title": "h2.ellipsis",
+            "company": ".contact h6",
+            "link": "a.external-link"
+        }
+    },
+    {
+        "name": "Educarriere",
+        "url": "https://www.educarriere.ci/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.col-page",
+            "title": "div.contenido-publicacion-home h3",
+            "company": "",
+            "link": "a.fondo-publicacion-home"
+        }
+    },
+    {
+        "name": "Rmo-jobcenter",
+        "url": "https://www.rmo-jobcenter.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "ul.liste_mini_num li",
+            "title": "a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Senjob",
+        "url": "https://www.senjob.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "",
+            "title": "",
+            "company": "",
+            "link": ""
+        }
+    },
+    {
+        "name": "Ngojobsinafrica",
+        "url": "https://www.ngojobsinafrica.com/jobs/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "article.noo_job",
+            "title": "h2.loop-item-title a",
+            "company": "span.job-company a",
+            "link": "h2.loop-item-title a"
+        }
+    },
+    {
+        "name": "Unjobs",
+        "url": "https://unjobs.org/duty_stations/ben",
+        "category": "Emploi",
+        "selectors": {
+            "container": "article",
+            "title": "a.jtitle",
+            "company": "",
+            "link": "a.jtitle"
+        }
+    },
+    {
+        "name": "Campusfrance",
+        "url": "https://www.campusfrance.org/fr/bourses-etudiants-etrangers",
+        "category": "Bourse",
+        "selectors": {
+            "container": "article.node--view-mode-teaser",
+            "title": ".title",
+            "company": "",
+            "link": "a"
+        }
+    }
+]
