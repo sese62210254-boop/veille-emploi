@@ -1,6 +1,12 @@
 import sqlite3
 from typing import List, Dict, Any
 import logging
+import os
+
+try:
+    from supabase import create_client, Client
+except ImportError:
+    create_client = None
 
 logger = logging.getLogger(__name__)
 
@@ -8,6 +14,18 @@ class Database:
     def __init__(self, db_name: str = "opportunites.db"):
         self.db_name = db_name
         self.init_db()
+        self.supabase = self.init_supabase()
+
+    def init_supabase(self):
+        url = os.getenv("SUPABASE_URL")
+        key = os.getenv("SUPABASE_KEY")
+        if url and key and create_client:
+            try:
+                return create_client(url, key)
+            except Exception as e:
+                logger.error(f"Erreur d'initialisation Supabase: {e}")
+                return None
+        return None
 
     def get_connection(self):
         return sqlite3.connect(self.db_name)
@@ -48,6 +66,21 @@ class Database:
                     VALUES (?, ?, ?, ?, ?, ?)
                 ''', (titre, lien, resume, source, type_opp, date_limite))
                 conn.commit()
+                
+                # Double-enregistrement dans Supabase Cloud
+                if self.supabase:
+                    try:
+                        self.supabase.table("opportunites").insert({
+                            "titre": titre,
+                            "lien": lien,
+                            "resume": resume,
+                            "source": source,
+                            "type": type_opp,
+                            "date_limite": date_limite
+                        }).execute()
+                    except Exception as e:
+                        logger.error(f"Erreur lors de l'envoi vers Supabase: {e}")
+                        
                 return True
             except sqlite3.IntegrityError:
                 return False
