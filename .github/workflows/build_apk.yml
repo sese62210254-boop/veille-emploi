@@ -1,7 +1,7 @@
 name: 📱 Fabriquer l'Application Mobile
 
 on:
-  workflow_dispatch: # Se lance uniquement à la main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
-        flutter-version: '3.22.0'
+        flutter-version: '3.19.6'
 
     - name: 🔨 Construction du projet magique
       run: |
@@ -30,6 +30,10 @@ jobs:
         rm -rf build_temp/lib/*
         cp -r app_mobile/lib/* build_temp/lib/
         cd build_temp
+        
+        # Correction de compatibilité Android
+        sed -i 's/flutter.minSdkVersion/21/g' android/app/build.gradle
+        
         flutter pub get
         flutter build apk --release
 
