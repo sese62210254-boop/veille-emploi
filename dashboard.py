@@ -5,6 +5,7 @@ import os
 import subprocess
 from database import Database
 from scraper import run_all_scrapers
+import time
 
 # ... (les autres imports sont déjà en haut, on met à jour la ligne d'import du scraper)
 # Attention, je vais plutôt chercher exactement la ligne import et l'appel.
@@ -160,7 +161,19 @@ with tab2:
     if st.button("🚀 Lancer le Scraping Maintenant"):
         with st.spinner("Scraping en cours sur tous les sites..."):
             run_all_scrapers(db)
-            st.success("Scraping terminé ! Les nouvelles offres vont être envoyées par e-mail et WhatsApp si le robot principal tourne.")
+            
+            # Vérifier les nouvelles offres et les envoyer
+            from notifications import notify_all
+            nouvelles = db.get_unsent_opportunities()
+            if nouvelles:
+                st.info(f"Envoi de {len(nouvelles)} nouvelle(s) offre(s)...")
+                for opp in nouvelles:
+                    msg = f"[{opp['type']}] {opp['titre']} \\ {opp['resume']}\nLien : {opp['lien']}\nDate limite : {opp['date_limite']}"
+                    notify_all(message=msg, subject=f"Nouvelle offre : {opp['titre']}")
+                    db.mark_as_sent(opp['id'])
+                    
+            st.success("Scraping terminé ! Les e-mails et messages ont été envoyés avec succès.")
+            time.sleep(2)
             st.rerun()
 
     st.markdown("---")
