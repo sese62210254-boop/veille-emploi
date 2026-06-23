@@ -34,8 +34,11 @@ jobs:
         # Correction de compatibilité Android
         sed -i 's/flutter.minSdkVersion/21/g' android/app/build.gradle
         
-        # AJOUT DE L'AUTORISATION INTERNET (Pour corriger votre erreur)
+        # AJOUT DE L'AUTORISATION INTERNET
         sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET" />' android/app/src/main/AndroidManifest.xml
+        
+        # RENOMMAGE DE L'APPLICATION EN "Lynha opportunité"
+        sed -i 's/android:label="build_temp"/android:label="Lynha opportunité"/g' android/app/src/main/AndroidManifest.xml
         
         flutter pub get
         flutter build apk --release
@@ -43,5 +46,5 @@ jobs:
     - name: 📦 Mise à disposition de l'application
       uses: actions/upload-artifact@v4
       with:
-        name: Veille_Emploi_App
+        name: Lynha_Opportunite_App
         path: build_temp/build/app/outputs/flutter-apk/app-release.apk
