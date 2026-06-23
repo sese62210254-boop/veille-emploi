@@ -35,27 +35,52 @@ def scrape_generic(db: Database, source: dict) -> int:
                 lien = lien_tag['href'] if lien_tag else url
                 lien = urljoin(url, lien)
                 
+                # OPTIMISATION : Si l'offre est déjà dans la base, on passe à la suivante direct !
+                if db.is_opportunity_known(lien):
+                    continue
+                
                 entreprise = "Non precisee"
                 if selectors.get('company'):
                     emp_tag = offre.select_one(selectors['company'])
                     if emp_tag: entreprise = emp_tag.text.strip()
                 
-                # NETTOYAGE INTELLIGENT DU RÉSUMÉ
-                # On essaie d'abord de prendre les paragraphes (souvent la vraie description)
-                paragraphs = offre.find_all('p')
-                if paragraphs:
-                    resume_text = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20])
-                else:
-                    resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
+                # EXTRACTION DE LA VRAIE DESCRIPTION (visite de la page de l'offre)
+                resume_text = ""
+                try:
+                    # Le robot clique virtuellement sur l'offre
+                    detail_resp = requests.get(lien, headers=headers, timeout=10)
+                    detail_soup = BeautifulSoup(detail_resp.text, 'html.parser')
+                    
+                    # Il cherche tous les paragraphes et listes
+                    detail_elements = detail_soup.find_all(['p', 'li'])
+                    bons_paragraphes = []
+                    for element in detail_elements:
+                        texte = element.text.replace('\n', ' ').strip()
+                        # On ne garde que les vraies phrases (plus de 60 caractères) pour éviter les menus
+                        if len(texte) > 60 and '{' not in texte and '<' not in texte:
+                            # On évite de répéter le titre
+                            if not texte.lower().startswith(titre.lower()[:30]):
+                                bons_paragraphes.append(texte)
+                    
+                    if bons_paragraphes:
+                        # On prend les 3 ou 4 premières phrases pertinentes
+                        resume_text = " ".join(bons_paragraphes[:4])
+                except Exception as e:
+                    pass
+                
+                # PLAN B : Si ça échoue, on prend le texte de la carte d'accueil
+                if not resume_text:
+                    paragraphs = offre.find_all('p')
+                    if paragraphs:
+                        resume_text = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20])
+                    else:
+                        resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
                 
                 # On nettoie les espaces multiples
                 resume_text = ' '.join(resume_text.split())
                 
-                # On enlève le titre s'il est au début du résumé pour éviter la répétition
-                if resume_text.startswith(titre):
-                    resume_text = resume_text[len(titre):].strip()
-                    
-                resume = f"{resume_text[:200]}..." if len(resume_text) > 200 else resume_text
+                # Limite pour l'application (on prend 250 caractères max pour un beau résumé)
+                resume = f"{resume_text[:250]}..." if len(resume_text) > 250 else resume_text
                 
                 # AUTO-CATÉGORISATION
                 texte_complet = (titre + " " + resume).lower()
@@ -108,4 +133,3 @@ def run_all_scrapers(db: Database):
             total_new += future.result()
             
     logger.info(f"Scan termine. {total_new} nouvelles opportunites trouvees au total.")
-
