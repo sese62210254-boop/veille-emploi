@@ -13,7 +13,7 @@ def formatter_message(opp: dict) -> str:
     """Formate l'opportunité selon votre modèle."""
     msg = f"[{opp['type']}] {opp['titre']} \\ {opp['resume']}\n"
     msg += f"🔗 Lien : {opp['lien']}\n"
-    msg += f"⏳ Date limite : {opp['date_limite']}"
+    msg += f"📅 Date limite : {opp['date_limite']}"
     return msg
 
 def job_scraping():
@@ -44,14 +44,5 @@ def job_scraping():
         db.mark_as_sent(opp['id'])
 
 if __name__ == "__main__":
-    logger.info("Lancement du système de veille en local...")
-    
-    # Pour tester immédiatement au lancement :
+    logger.info("Lancement du système de veille sur GitHub Actions...")
     job_scraping()
-    
-    # Planifier toutes les heures
-    schedule.every(1).hours.do(job_scraping)
-    
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
