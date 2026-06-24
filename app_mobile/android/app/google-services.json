@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543687262370",
+    "project_id": "lynha-opportunite",
+    "storage_bucket": "lynha-opportunite.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543687262370:android:309e7bcf01a4052cbed7fb",
+        "android_client_info": {
+          "package_name": "com.example.veille_emploi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtsg7Cf215DCI601OifM1VWY8-e7W_pkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
