@@ -3,6 +3,11 @@ allprojects {
         google()
         mavenCentral()
     }
+    
+    // 👇 AJOUT CRUCIAL : Force la version Android pour les plugins défectueux
+    project.ext {
+        compileSdkVersion = 34
+    }
 }
 
 rootProject.buildDir = "../build"
