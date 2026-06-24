@@ -268,52 +268,77 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(width: 8),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: isDark 
-                      ? [const Color(0xFF1E3A8A), const Color(0xFF0F172A)]
-                      : [const Color(0xFF2563EB), const Color(0xFF60A5FA)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.rocket_launch, size: 40, color: Colors.white),
-                        const SizedBox(height: 8),
-                        const Text(
-                          'Lynha opportunité',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1.2,
-                          ),
-                        ),
-                      ],
+              background: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        viewportFraction: 1.0,
+                        enlargeCenterPage: false,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                      ),
+                      items: [
+                        'assets/images/hr-recruiters-applicant-reading-employment-agreement-terms.jpg',
+                        'assets/images/joyful-successful-sales-agent-presenting-content-tablet.jpg',
+                        'assets/images/women-working-together-office.jpg',
+                        'assets/images/human-resources-people-networking-concept.jpg',
+                      ].map((item) => Image.asset(
+                        item,
+                        fit: BoxFit.cover,
+                      )).toList(),
                     ),
-                  ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.black.withOpacity(0.6),
+                            Colors.black.withOpacity(0.2),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.rocket_launch, size: 40, color: Colors.white),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Lynha opportunité',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(60),
-              child: Container(
-                height: 60,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(60),
+                child: Container(
+                  height: 60,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
                   ),
-                ),
-                child: TextField(
+                  child: TextField(
                   onChanged: (value) {
                     _searchQuery = value;
                     _applyFilters();
