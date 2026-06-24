@@ -3,11 +3,6 @@ allprojects {
         google()
         mavenCentral()
     }
-    
-    // 👇 AJOUT CRUCIAL : Force la version Android pour les plugins défectueux
-    project.ext {
-        compileSdkVersion = 34
-    }
 }
 
 rootProject.buildDir = "../build"
@@ -20,4 +15,18 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+
+// 👇 LA SOLUTION RADICALE : On force absolument TOUS les plugins à utiliser Android 34
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    namespace project.group
+                }
+                compileSdkVersion 34
+            }
+        }
+    }
 }
