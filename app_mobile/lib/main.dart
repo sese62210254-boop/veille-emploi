@@ -372,47 +372,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           
-          // Carousel Images
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: 180.0,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  viewportFraction: 0.85,
-                ),
-                items: [
-                  'assets/images/hr-recruiters-applicant-reading-employment-agreement-terms.jpg',
-                  'assets/images/joyful-successful-sales-agent-presenting-content-tablet.jpg',
-                  'assets/images/women-working-together-office.jpg',
-                  'assets/images/human-resources-people-networking-concept.jpg',
-                ].map((item) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(isDark ? 0.4 : 0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                    image: DecorationImage(
-                      image: AssetImage(item),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                )).toList(),
-              ),
-            ),
-          ),
-
           // Main List
           if (_isLoading)
             const SliverFillRemaining(
