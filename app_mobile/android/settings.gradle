@@ -24,3 +24,6 @@ plugins {
 }
 
 include ":app"
+
+
+File(\"local.properties\).append(\"flutter.compileSdkVersion=34\nflutter.targetSdkVersion=34\nflutter.minSdkVersion=23\n\")
