@@ -13,8 +13,23 @@ logger = logging.getLogger(__name__)
 class Database:
     def __init__(self, db_name: str = "opportunites.db"):
         self.db_name = db_name
+        self.known_links = set()
         self.init_db()
         self.supabase = self.init_supabase()
+        self.load_known_links_from_supabase()
+
+
+    def load_known_links_from_supabase(self):
+        if self.supabase:
+            try:
+                response = self.supabase.table("opportunites").select("lien").execute()
+                if hasattr(response, "data"):
+                    for row in response.data:
+                        if "lien" in row:
+                            self.known_links.add(row["lien"])
+                logger.info(f"{len(self.known_links)} liens connus charges depuis Supabase.")
+            except Exception as e:
+                logger.error(f"Erreur lors du chargement depuis Supabase: {e}")
 
     def init_supabase(self):
         url = os.getenv("SUPABASE_URL")
@@ -49,6 +64,8 @@ class Database:
             conn.commit()
 
     def is_opportunity_known(self, lien: str) -> bool:
+        if lien in self.known_links:
+            return True
         with self.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute('SELECT 1 FROM opportunite WHERE lien = ?', (lien,))
@@ -66,6 +83,7 @@ class Database:
                     VALUES (?, ?, ?, ?, ?, ?)
                 ''', (titre, lien, resume, source, type_opp, date_limite))
                 conn.commit()
+                self.known_links.add(lien)
                 
                 # Double-enregistrement dans Supabase Cloud
                 if self.supabase:
