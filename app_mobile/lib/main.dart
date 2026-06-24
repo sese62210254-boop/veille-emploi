@@ -8,28 +8,43 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialisation de Firebase
-  await Firebase.initializeApp();
+    // Initialisation de Firebase
+    await Firebase.initializeApp();
 
-  // Demande d'autorisation pour les notifications et abonnement
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-  await messaging.requestPermission(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-  await messaging.subscribeToTopic('nouvelles_offres');
+    // Demande d'autorisation pour les notifications et abonnement
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    await messaging.subscribeToTopic('nouvelles_offres');
 
-  await Supabase.initialize(
-    url: 'https://eounqfjlfkkqyjnvpqcx.supabase.co',
-    anonKey: 'sb_publishable_Wx8W4DOPY0N3HcpjAnmIhA_vMqutAex',
-  );
+    await Supabase.initialize(
+      url: 'https://eounqfjlfkkqyjnvpqcx.supabase.co',
+      anonKey: 'sb_publishable_Wx8W4DOPY0N3HcpjAnmIhA_vMqutAex',
+    );
 
-  timeago.setLocaleMessages('fr', timeago.FrMessages());
+    timeago.setLocaleMessages('fr', timeago.FrMessages());
 
-  runApp(const MyApp());
+    runApp(const MyApp());
+  } catch (e, stackTrace) {
+    runApp(MaterialApp(
+      home: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Text(
+              'ERREUR FATALE:\n$e\n\n$stackTrace',
+              style: TextStyle(color: Colors.red, fontSize: 12),
+            ),
+          ),
+        ),
+      ),
+    ));
+  }
 }
 
 class MyApp extends StatelessWidget {
