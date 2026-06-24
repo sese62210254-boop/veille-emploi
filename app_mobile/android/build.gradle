@@ -16,3 +16,10 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+// Définition globale pour tous les vieux plugins !
+rootProject.ext {
+    set('compileSdkVersion', 34)
+    set('minSdkVersion', 23)
+    set('targetSdkVersion', 34)
+}
