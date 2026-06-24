@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,13 +64,58 @@ class _HomePageState extends State<HomePage> {
   bool _isLoading = true;
   String _selectedCategory = 'Tous';
   String _searchQuery = '';
+  
+  int _unreadCount = 0;
+  DateTime? _lastSeenDate;
 
   final List<String> _categories = ['Tous', 'Emploi', 'Stage', 'Bourse', 'Concours'];
 
   @override
   void initState() {
     super.initState();
-    _fetchOpportunites();
+    _loadLastSeenDate().then((_) {
+      _fetchOpportunites();
+    });
+  }
+
+  Future<void> _loadLastSeenDate() async {
+    final prefs = await SharedPreferences.getInstance();
+    final dateStr = prefs.getString('last_seen_date');
+    if (dateStr != null) {
+      setState(() {
+        _lastSeenDate = DateTime.tryParse(dateStr);
+      });
+    }
+  }
+
+  Future<void> _updateLastSeenDate() async {
+    final prefs = await SharedPreferences.getInstance();
+    final now = DateTime.now();
+    await prefs.setString('last_seen_date', now.toIso8601String());
+    setState(() {
+      _lastSeenDate = now;
+      _unreadCount = 0;
+    });
+  }
+
+  void _calculateUnreadCount() {
+    if (_lastSeenDate == null) {
+      _unreadCount = _opportunites.length;
+      return;
+    }
+    int count = 0;
+    for (var opp in _opportunites) {
+      final dateStr = opp['date_decouverte'] as String?;
+      if (dateStr != null) {
+        final dateObj = DateTime.tryParse(dateStr);
+        if (dateObj != null && dateObj.isAfter(_lastSeenDate!)) {
+          count++;
+        }
+      }
+    }
+    setState(() {
+      _unreadCount = count;
+    });
   }
 
   Future<void> _fetchOpportunites() async {
@@ -83,6 +130,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         _opportunites = List<Map<String, dynamic>>.from(data);
         _applyFilters();
+        _calculateUnreadCount();
       });
     } catch (e) {
       if (mounted) {
@@ -149,10 +197,47 @@ class _HomePageState extends State<HomePage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 180.0,
+            expandedHeight: 220.0,
             floating: true,
             pinned: true,
             elevation: 0,
+            actions: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.notifications, color: Colors.white, size: 28),
+                    onPressed: () {
+                      _updateLastSeenDate();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Notifications marquées comme lues.')),
+                      );
+                    },
+                  ),
+                  if (_unreadCount > 0)
+                    Positioned(
+                      right: 12,
+                      top: 12,
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          _unreadCount > 99 ? '99+' : '$_unreadCount',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(width: 8),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(
@@ -166,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 40.0),
+                    padding: const EdgeInsets.only(top: 20.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -254,6 +339,47 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
+              ),
+            ),
+          ),
+          
+          // Carousel Images
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 180.0,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  viewportFraction: 0.85,
+                ),
+                items: [
+                  'assets/images/hr-recruiters-applicant-reading-employment-agreement-terms.jpg',
+                  'assets/images/joyful-successful-sales-agent-presenting-content-tablet.jpg',
+                  'assets/images/women-working-together-office.jpg',
+                  'assets/images/human-resources-people-networking-concept.jpg',
+                ].map((item) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(isDark ? 0.4 : 0.2),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                    image: DecorationImage(
+                      image: AssetImage(item),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )).toList(),
               ),
             ),
           ),
