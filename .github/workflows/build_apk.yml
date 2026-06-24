@@ -27,6 +27,7 @@ jobs:
       run: |
         cd app_mobile
         flutter pub get
+        echo "flutter.compileSdkVersion=34" >> android/local.properties
         flutter build apk --release
 
     - name: 📦 Mise à disposition de l'application
