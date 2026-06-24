@@ -27,12 +27,6 @@ jobs:
       run: |
         cd app_mobile
         flutter pub upgrade
-        
-        # Le Hack ultime: modifier le script gradlew pour injecter la variable juste avant que Gradle démarre !
-        sed -i '2i echo "flutter.compileSdkVersion=34" >> local.properties' android/gradlew
-        sed -i '2i echo "flutter.targetSdkVersion=34" >> local.properties' android/gradlew
-        sed -i '2i echo "flutter.minSdkVersion=23" >> local.properties' android/gradlew
-        
         flutter build apk --release
 
     - name: 📦 Mise à disposition de l'application
