@@ -4,9 +4,23 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialisation de Firebase
+  await Firebase.initializeApp();
+
+  // Demande d'autorisation pour les notifications et abonnement
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  await messaging.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+  await messaging.subscribeToTopic('nouvelles_offres');
 
   await Supabase.initialize(
     url: 'https://eounqfjlfkkqyjnvpqcx.supabase.co',
