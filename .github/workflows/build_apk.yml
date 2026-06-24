@@ -1,27 +1,36 @@
-steps:
-  - name: 📥 Récupération du code
-    uses: actions/checkout@v4
-  
-  - name: ⚙️ Configuration de Java
-    uses: actions/setup-java@v3
-    with:
-      distribution: 'zulu'
-      java-version: '17'
-  
-  - name: 🦋 Installation de Flutter
-    uses: subosito/flutter-action@v2
-    with:
-      channel: 'stable'
-      flutter-version: '3.22.0'
-  
-  - name: 🔨 Construction du projet
-    run: |
-      cd app_mobile
-      flutter pub get
-      flutter build apk --release
-  
-  - name: 📦 Mise à disposition de l'application
-    uses: actions/upload-artifact@v4
-    with:
-      name: Veille_Emploi_App
-      path: app_mobile/build/app/outputs/flutter-apk/app-release.apk
+name: 📱 Fabriquer l'Application Mobile
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Récupération du code
+      uses: actions/checkout@v4
+
+    - name: ⚙️ Configuration de Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+
+    - name: 🦋 Installation de Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        flutter-version: '3.22.0'
+
+    - name: 🔨 Construction du projet
+      run: |
+        cd app_mobile
+        flutter pub get
+        flutter build apk --release
+
+    - name: 📦 Mise à disposition de l'application
+      uses: actions/upload-artifact@v4
+      with:
+        name: Veille_Emploi_App
+        path: app_mobile/build/app/outputs/flutter-apk/app-release.apk
