@@ -327,7 +327,7 @@ class _OpportunityCardState extends State<OpportunityCard> {
                     border: Border.all(color: isDark ? Colors.grey[800]! : Colors.grey[200]!),
                   ),
                   child: Text(
-                    opp['resume'] != null && opp['resume'].length > 150 ? '...' : (opp['resume'] ?? ''),
+                    opp['resume'] != null && opp['resume'].length > 150 ? '${opp['resume'].substring(0, 150)}...' : (opp['resume'] ?? ''),
                     style: TextStyle(fontSize: 14, height: 1.5, color: isDark ? Colors.grey[300] : Colors.grey[700]),
                   ),
                 ),
