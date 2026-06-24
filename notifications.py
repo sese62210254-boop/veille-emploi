@@ -5,6 +5,8 @@ from email.mime.multipart import MIMEMultipart
 import os
 import logging
 from dotenv import load_dotenv
+import firebase_admin
+from firebase_admin import credentials, messaging
 
 load_dotenv()
 logger = logging.getLogger(__name__)
@@ -58,6 +60,44 @@ def send_email_gmail(sender_email: str, app_password: str, receiver_email: str, 
     except Exception as e:
         logger.error(f"Erreur d'envoi d'e-mail: {e}")
 
+
+# Initialisation de Firebase
+def init_firebase():
+    if not firebase_admin._apps:
+        # Essayer de lire depuis la variable d'environnement (Secret GitHub)
+        service_account_info = os.getenv("FIREBASE_SERVICE_ACCOUNT")
+        if service_account_info:
+            try:
+                import json
+                cred_dict = json.loads(service_account_info)
+                cred = credentials.Certificate(cred_dict)
+                firebase_admin.initialize_app(cred)
+                logger.info("Firebase Admin initialisé avec succès depuis la variable d'environnement.")
+                return True
+            except Exception as e:
+                logger.error(f"Erreur lors du parsing du JSON Firebase : {e}")
+        else:
+            logger.warning("Aucune configuration Firebase trouvée. Les notifications Push sont désactivées.")
+    return len(firebase_admin._apps) > 0
+
+def send_firebase_push(title: str, body: str):
+    """Envoie une notification Push Firebase à tous les utilisateurs abonnés au topic 'nouvelles_offres'."""
+    if not init_firebase():
+        return
+        
+    try:
+        message = messaging.Message(
+            notification=messaging.Notification(
+                title=title,
+                body=body
+            ),
+            topic='nouvelles_offres',
+        )
+        response = messaging.send(message)
+        logger.info(f"Notification Firebase envoyée avec succès : {response}")
+    except Exception as e:
+        logger.error(f"Erreur d'envoi de notification Firebase : {e}")
+
 def notify_all(message: str, subject: str = "Nouvelle Opportunité !"):
     """Fonction principale pour envoyer les notifications sur tous les canaux configurés."""
     
@@ -79,3 +119,6 @@ def notify_all(message: str, subject: str = "Nouvelle Opportunité !"):
     gmail_receiver = os.getenv("GMAIL_RECEIVER")
     if gmail_sender and gmail_pwd and gmail_receiver:
         send_email_gmail(gmail_sender, gmail_pwd, gmail_receiver, subject, message)
+    
+    # --- Firebase Push Notifications (Mobile App) ---
+    send_firebase_push(title=subject, body=message[:200] + ("..." if len(message) > 200 else ""))
