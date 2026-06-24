@@ -26,3 +26,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+
+# 👇 LE COUP DE GRÂCE : On force l'utilisation d'un plugin neuf sans bug !
+dependency_overrides:
+  package_info_plus: ^8.0.0
