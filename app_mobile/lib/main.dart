@@ -196,8 +196,9 @@ class _OpportunityCardState extends State<OpportunityCard> {
   Future<void> _share() async {
     final url = widget.opp['lien'];
     final titre = widget.opp['titre'];
-    await Share.share('🚀 Lynha opportunité : \
-\nLien : ');
+    await Share.share('🚀 Lynha opportunité : $titre
+
+Lien : $url');
   }
 
   Future<void> _openLink() async {
