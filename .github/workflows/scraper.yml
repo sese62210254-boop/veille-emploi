@@ -2,7 +2,7 @@ name: 🔄 Mise à jour automatique des Opportunités
 
 on:
   schedule:
-    - cron: '0 2 * * *'  # Tous les jours à 2h du matin
+    - cron: '0 */3 * * *'  # Tous les jours à 2h du matin
   workflow_dispatch:      # Permet de lancer manuellement
 
 jobs:
