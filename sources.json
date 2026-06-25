@@ -449,5 +449,49 @@
             "company": "",
             "link": "h4 a"
         }
+    },
+    {
+        "name": "FNDA Bénin (Fonds Agricole)",
+        "url": "https://fnda.bj/actualites",
+        "category": "Financement",
+        "selectors": {
+            "container": "article.post, div.blog-post",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "FNM Bénin (Microfinance)",
+        "url": "https://fnm.bj/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.actualite-item, article",
+            "title": "h4 a, h3 a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Ministère de la Santé Bénin (Recrutements)",
+        "url": "https://sante.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article.post, div.news-item",
+            "title": "h3 a, h4 a",
+            "company": "",
+            "link": "h3 a, h4 a"
+        }
+    },
+    {
+        "name": "Ministère de la Justice Bénin",
+        "url": "https://justice.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article, div.actualite",
+            "title": "h2 a, h3 a",
+            "company": "",
+            "link": "h2 a, h3 a"
+        }
     }
 ]
