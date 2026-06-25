@@ -603,5 +603,49 @@
             "company": "",
             "link": "a.read-more, h4 a"
         }
+    },
+    {
+        "name": "Talents Plus Conseils Bénin",
+        "url": "https://talents-plus.com/offres/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job_listing, article",
+            "title": "h3 a",
+            "company": "div.company",
+            "link": "h3 a"
+        }
+    },
+    {
+        "name": "Pro Work Agency Bénin",
+        "url": "https://agenceprowork.com/jobs/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-item, li.job",
+            "title": "h4 a, h3 a",
+            "company": "",
+            "link": "h4 a, h3 a"
+        }
+    },
+    {
+        "name": "Ylomi Bénin",
+        "url": "https://www.ylomi.net/jobs",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.card-job, div.job-post",
+            "title": "h5.card-title, h3",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Sèmè City (Offres & Appels)",
+        "url": "https://semecity.bj/appels-a-candidatures/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.elementor-post, article",
+            "title": "h3 a",
+            "company": "",
+            "link": "h3 a"
+        }
     }
 ]
