@@ -12,17 +12,24 @@ def est_vraie_opportunite(titre: str, resume: str) -> bool:
     """Filtre ultra-strict : Analyse structurelle et semantique de l'annonce."""
     texte = (titre + " " + resume).lower()
     
-    # 1. Filtre Négatif ÉTENDU
-    mots_bannis = [
+    titre_bas = titre.lower()
+    
+    # 1. Filtre Négatif ÉTENDU (Principalement sur le titre pour éviter les faux rejets)
+    mots_bannis_titre = [
         "tournée", "visite", "atelier", "séminaire", "lancement officiel", 
         "rencontre", "audience", "conseil des ministres", "déploiement", 
         "célébration", "inauguration", "journée mondiale", "journée internationale", 
-        "décès", "compte rendu", "adoption de", "remise de", "cérémonie", 
+        "compte rendu", "adoption de", "remise de", "cérémonie", 
         "festival", "discours", "hommage", "journée nationale", "prise de contact", 
         "sensibilisation", "campagne", "examens", "bepc", "baccalauréat"
     ]
-    for mot in mots_bannis:
-        if mot in titre.lower() or mot in texte:
+    for mot in mots_bannis_titre:
+        if mot in titre_bas:
+            return False
+            
+    mots_bannis_absolus = ["décès", "nécrologie", "condoléances"]
+    for mot in mots_bannis_absolus:
+        if mot in texte:
             return False
             
     # 2. Mots-clés directs ULTRA-STRICTS (Phrases exactes, 0 ambiguïté)
@@ -60,6 +67,10 @@ def est_vraie_opportunite(titre: str, resume: str) -> bool:
     # NOUVEAU : Marqueurs spécifiques au Financement / Projets
     if any(m in texte for m in ["critères d'éligibilité", "éligibles", "lignes directrices", "plan d'affaires", "business plan", "montant de la subvention", "enveloppe financière"]):
         score += 2
+        
+    # NOUVEAU : Marqueurs de Formation / Webinaire (Points Max)
+    if any(m in texte for m in ["webinaire", "masterclass", "inscrivez-vous", "s'inscrire", "formation en ligne", "certificat", "séminaire de formation"]):
+        score += 5
         
     return score >= 5
 
@@ -106,6 +117,7 @@ def scrape_generic(db: Database, source: dict) -> int:
                 
                 # EXTRACTION DE LA VRAIE DESCRIPTION
                 resume_text = ""
+                texte_complet_page = ""
                 try:
                     detail_resp = requests.get(lien, headers=headers, timeout=10)
                     detail_soup = BeautifulSoup(detail_resp.text, 'html.parser')
@@ -117,31 +129,40 @@ def scrape_generic(db: Database, source: dict) -> int:
                             if not texte_p.lower().startswith(titre.lower()[:30]):
                                 bons_paragraphes.append(texte_p)
                     if bons_paragraphes:
+                        texte_complet_page = " ".join(bons_paragraphes)
                         resume_text = " ".join(bons_paragraphes[:4])
                 except Exception as e:
                     pass
                 
-                if not resume_text:
+                if not texte_complet_page:
                     paragraphs = offre.find_all('p')
                     if paragraphs:
-                        resume_text = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20])
+                        texte_complet_page = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20])
+                        resume_text = " ".join([p.text.strip() for p in paragraphs if len(p.text.strip()) > 20][:4])
                     else:
-                        resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
+                        texte_complet_page = offre.text.replace('\n', ' ').replace('\r', '').strip()
+                        resume_text = texte_complet_page
                 
+                if not resume_text:
+                    resume_text = texte_complet_page
+
+                texte_complet_page = ' '.join(texte_complet_page.split())
                 resume_text = ' '.join(resume_text.split())
                 
-                # INTEGRATION DE L'INTELLIGENCE : Le robot juge l'opportunité
-                if not est_vraie_opportunite(titre, resume_text):
+                # INTEGRATION DE L'INTELLIGENCE : Le robot juge l'opportunité sur 100% du texte
+                if not est_vraie_opportunite(titre, texte_complet_page):
                     logger.debug(f"Annonce rejetée (Bruit) : {titre[:50]}")
                     continue
                 
                 resume = f"{resume_text[:250]}..." if len(resume_text) > 250 else resume_text
                 
                 # AUTO-CATÉGORISATION
-                texte_complet = (titre + " " + resume).lower()
+                texte_complet = (titre + " " + texte_complet_page).lower()
                 type_opp = source['category']
                 if 'stage' in texte_complet or 'stagiaire' in texte_complet:
                     type_opp = 'Stage'
+                elif any(m in texte_complet for m in ['webinaire', 'formation', 'masterclass']):
+                    type_opp = 'Formation'
                 elif 'bourse' in texte_complet or 'scholarship' in texte_complet:
                     type_opp = 'Bourse'
                 elif 'concours' in texte_complet:
