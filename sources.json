@@ -273,5 +273,27 @@
             "company": "",
             "link": "h3.offer-title a"
         }
+    },
+    {
+        "name": "NGO Jobs in Africa (Benin)",
+        "url": "https://ngojobsinafrica.com/jobs/benin/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing",
+            "title": "h3.job-title a",
+            "company": "div.job-company",
+            "link": "h3.job-title a"
+        }
+    },
+    {
+        "name": "Educarriere",
+        "url": "https://emploi.educarriere.ci/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.col-page",
+            "title": "h3",
+            "company": "span.company-name",
+            "link": "a.fondo-publicacion-home"
+        }
     }
 ]
