@@ -405,5 +405,49 @@
             "company": "",
             "link": "h3.elementor-post__title a"
         }
+    },
+    {
+        "name": "Agence Universitaire de la Francophonie (Appels)",
+        "url": "https://www.auf.org/nouvelles/appels-a-candidatures/",
+        "category": "Financement",
+        "selectors": {
+            "container": "article.card-news",
+            "title": "h3.card-title a",
+            "company": "",
+            "link": "h3.card-title a"
+        }
+    },
+    {
+        "name": "Ambassade de France au Bénin (Bourses)",
+        "url": "https://bj.ambafrance.org/Bourses-d-etudes-et-de-stages",
+        "category": "Bourse",
+        "selectors": {
+            "container": "li.article",
+            "title": "h3.titre-article a",
+            "company": "",
+            "link": "h3.titre-article a"
+        }
+    },
+    {
+        "name": "UNFPA Bénin",
+        "url": "https://benin.unfpa.org/fr/vacancies",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.views-row",
+            "title": "span.field-content a",
+            "company": "",
+            "link": "span.field-content a"
+        }
+    },
+    {
+        "name": "Banque Mondiale (Bénin)",
+        "url": "https://www.banquemondiale.org/fr/country/benin",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.blog-item",
+            "title": "h4 a",
+            "company": "",
+            "link": "h4 a"
+        }
     }
 ]
