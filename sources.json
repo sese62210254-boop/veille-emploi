@@ -110,17 +110,6 @@
         }
     },
     {
-        "name": "Beninemploiplus",
-        "url": "https://beninemploiplus.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "",
-            "title": "",
-            "company": "",
-            "link": ""
-        }
-    },
-    {
         "name": "Travail",
         "url": "https://travail.gouv.bj/",
         "category": "Emploi",
@@ -129,17 +118,6 @@
             "title": "p",
             "company": "",
             "link": "a"
-        }
-    },
-    {
-        "name": "Psie",
-        "url": "https://psie.bj/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "",
-            "title": "",
-            "company": "",
-            "link": ""
         }
     },
     {
@@ -220,17 +198,6 @@
         }
     },
     {
-        "name": "Senjob",
-        "url": "https://www.senjob.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "",
-            "title": "",
-            "company": "",
-            "link": ""
-        }
-    },
-    {
         "name": "Ngojobsinafrica",
         "url": "https://www.ngojobsinafrica.com/jobs/",
         "category": "Emploi",
@@ -261,6 +228,39 @@
             "title": ".title",
             "company": "",
             "link": "a"
+        }
+    },
+    {
+        "name": "Jeune Afrique Emploi",
+        "url": "https://emplois.jeuneafrique.com/offres-d-emploi/benin/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing",
+            "title": "h3.job-title a",
+            "company": "div.job-company",
+            "link": "h3.job-title a"
+        }
+    },
+    {
+        "name": "Mon Emploi Benin",
+        "url": "https://www.monemploibenin.com/offres",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.card-job",
+            "title": "h5.card-title a",
+            "company": "div.company-name",
+            "link": "h5.card-title a"
+        }
+    },
+    {
+        "name": "Bourses Afrique",
+        "url": "https://boursesafrique.com/category/bourses-detudes/",
+        "category": "Bourse",
+        "selectors": {
+            "container": "article.post",
+            "title": "h2.entry-title a",
+            "company": "",
+            "link": "h2.entry-title a"
         }
     }
 ]
