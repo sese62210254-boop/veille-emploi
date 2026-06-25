@@ -9,47 +9,48 @@ from urllib.parse import urljoin
 logger = logging.getLogger(__name__)
 
 def est_vraie_opportunite(titre: str, resume: str) -> bool:
-    """Filtre intelligent : Analyse structurelle et semantique de l'annonce."""
+    """Filtre ultra-strict : Analyse structurelle et semantique de l'annonce."""
     texte = (titre + " " + resume).lower()
     
-    # 1. Filtre Négatif : Liste noire stricte (Bruit gouvernemental / presse)
+    # 1. Filtre Négatif ÉTENDU : Rejette brutalement le blabla institutionnel
     mots_bannis = [
-        "célébration", "inauguration", "journée mondiale", "journée internationale",
-        "décès", "audience", "conseil des ministres", "compte rendu", 
-        "visite de travail", "adoption de", "remise de", "cérémonie", "festival",
-        "discours", "hommage", "journée nationale"
+        "tournée", "visite", "atelier", "séminaire", "lancement officiel", 
+        "rencontre", "audience", "conseil des ministres", "déploiement", 
+        "célébration", "inauguration", "journée mondiale", "journée internationale", 
+        "décès", "compte rendu", "adoption de", "remise de", "cérémonie", 
+        "festival", "discours", "hommage", "journée nationale", "prise de contact", 
+        "sensibilisation", "campagne", "examens", "bepc", "baccalauréat"
     ]
+    # Check if banned word is in TITLE (most important) or text
     for mot in mots_bannis:
-        if mot in texte:
+        if mot in titre.lower() or mot in texte:
             return False
             
-    # 2. Mots-clés directs : L'annonce affiche explicitement sa couleur
-    mots_directs = [
-        "recrutement", "recrute", "appel à candidature", "appel d'offre", 
-        "avis de recrutement", "bourse", "scholarship", "financement", 
-        "subvention", "concours", "manifestation d'intérêt"
+    # 2. Mots-clés directs ULTRA-STRICTS (Phrases exactes, pas de mots isolés)
+    # On supprime "financement" ou "bourse" seuls car ils causent des faux positifs.
+    mots_directs_stricts = [
+        "appel à candidature", "appel à candidatures", "appel d'offre", "appels d'offres",
+        "avis de recrutement", "termes de référence", "manifestation d'intérêt",
+        "recrutement de", "recrutement d'un", "offre d'emploi", "job opening", 
+        "job vacancy", "postes vacants"
     ]
-    for mot in mots_directs:
+    for mot in mots_directs_stricts:
         if mot in texte:
             return True
             
     # 3. Score Structurel : Analyse de la présence des marqueurs d'une opportunité
     score = 0
     
-    # Marqueurs temporels (Délai)
     if any(m in texte for m in ["délai", "date limite", "au plus tard", "jusqu'au", "clôture", "deadline"]):
         score += 3
         
-    # Marqueurs d'action (Comment postuler)
-    if any(m in texte for m in ["postuler", "soumettre", "candidature", "dossier", "envoyer", "cv", "lettre de motivation", "tdr", "termes de référence"]):
+    if any(m in texte for m in ["postuler", "soumettre", "candidature", "dossier", "envoyer", "cv", "lettre de motivation", "tdr"]):
         score += 3
         
-    # Marqueurs d'exigence (Profil recherché)
     if any(m in texte for m in ["profil", "expérience", "diplôme", "bac+", "compétences", "exigences", "éligibilité", "qualification"]):
         score += 2
         
-    # Une annonce est validée si elle a suffisamment de structure (ex: délai + profil = 5)
-    return score >= 4
+    return score >= 5
 
 
 def scrape_generic(db: Database, source: dict) -> int:
