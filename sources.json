@@ -691,5 +691,49 @@
             "company": "",
             "link": "a"
         }
+    },
+    {
+        "name": "UEMOA (Appels et Recrutements)",
+        "url": "https://www.uemoa.int/fr/offres-d-emplois",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.views-row, article",
+            "title": "span.field-content a, h3 a",
+            "company": "",
+            "link": "span.field-content a, h3 a"
+        }
+    },
+    {
+        "name": "BOAD (Carrières)",
+        "url": "https://www.boad.org/carrieres/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.offre-emploi-item, tr",
+            "title": "h4 a, td a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "OMS (WHO Careers)",
+        "url": "https://careers.who.int/careers/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "tr.job-row, div.job-listing",
+            "title": "td.job-title a, h3 a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Organisation Internationale pour les Migrations (OIM)",
+        "url": "https://www.iom.int/fr/recruitment",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.views-row",
+            "title": "span.field-content a",
+            "company": "",
+            "link": "span.field-content a"
+        }
     }
 ]
