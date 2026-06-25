@@ -262,5 +262,16 @@
             "company": "",
             "link": "h2.entry-title a"
         }
+    },
+    {
+        "name": "AfricSearch Benin",
+        "url": "https://www.africsearch.com/offres-d-emploi",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.offer",
+            "title": "h3.offer-title a",
+            "company": "",
+            "link": "h3.offer-title a"
+        }
     }
 ]
