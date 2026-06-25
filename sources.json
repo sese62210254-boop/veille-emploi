@@ -537,5 +537,27 @@
             "company": "",
             "link": "h3 a, h4 a"
         }
+    },
+    {
+        "name": "Benin Job",
+        "url": "https://beninjob.com/emplois",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-item, div.card",
+            "title": "h2 a, h3 a",
+            "company": "span.company, div.company",
+            "link": "h2 a, h3 a"
+        }
+    },
+    {
+        "name": "eGoZola Bénin",
+        "url": "https://www.egozola.com/offres-d-emploi-au-benin",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-card, li",
+            "title": "h3 a, h4 a",
+            "company": "",
+            "link": "h3 a, h4 a"
+        }
     }
 ]
