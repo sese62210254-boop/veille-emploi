@@ -493,5 +493,49 @@
             "company": "",
             "link": "h2 a, h3 a"
         }
+    },
+    {
+        "name": "Ministère de l'Agriculture Bénin",
+        "url": "https://agriculture.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article.post, div.news-item",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "Ministère du Cadre de Vie Bénin",
+        "url": "https://cadredevie.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article.post, div.news-item",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "Ministère des Affaires Sociales Bénin",
+        "url": "https://social.gouv.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article.post, div.news-item",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "Portail des Services Publics Bénin",
+        "url": "https://service-public.bj/actualites",
+        "category": "Concours",
+        "selectors": {
+            "container": "article, div.actualite-card",
+            "title": "h3 a, h4 a",
+            "company": "",
+            "link": "h3 a, h4 a"
+        }
     }
 ]
