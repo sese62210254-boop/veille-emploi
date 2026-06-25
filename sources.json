@@ -328,5 +328,38 @@
             "company": "div.job-listing-company",
             "link": "h3.job-listing-title a"
         }
+    },
+    {
+        "name": "MESRS Bénin (Bourses & Communiqués)",
+        "url": "https://enseignementsuperieur.gouv.bj/actualites",
+        "category": "Bourse",
+        "selectors": {
+            "container": "div.actualite-item, article",
+            "title": "h4 a, h3 a, h2 a",
+            "company": "",
+            "link": "h4 a, h3 a, h2 a"
+        }
+    },
+    {
+        "name": "ADPME Bénin (Financements PME)",
+        "url": "https://adpme.bj/opportunites/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.opportunite-card, article",
+            "title": "h3 a",
+            "company": "",
+            "link": "h3 a, a.btn-read-more"
+        }
+    },
+    {
+        "name": "CCI Bénin (Appels à projets)",
+        "url": "https://cci.bj/appels-a-projets",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.card-appel, div.row.mb-4",
+            "title": "h4, h5 a",
+            "company": "",
+            "link": "a.btn, h5 a"
+        }
     }
 ]
