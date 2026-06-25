@@ -647,5 +647,49 @@
             "company": "",
             "link": "h3 a"
         }
+    },
+    {
+        "name": "OIF (Francophonie) - Appels & Recrutements",
+        "url": "https://www.francophonie.org/appels-a-candidatures",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.views-row, article",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "CEDEAO (Offres & Emplois)",
+        "url": "https://ecowas.int/careers/?lang=fr",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.career-item, tr",
+            "title": "h4 a, td a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "PNUD (UNDP Jobs)",
+        "url": "https://jobs.undp.org/cj_view_jobs.cfm",
+        "category": "Emploi",
+        "selectors": {
+            "container": "tr",
+            "title": "td a.job-title",
+            "company": "",
+            "link": "td a.job-title"
+        }
+    },
+    {
+        "name": "Banque Africaine de Développement (BAD)",
+        "url": "https://www.afdb.org/fr/about-us/careers",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.views-row, tr",
+            "title": "span.field-content a, td a",
+            "company": "",
+            "link": "a"
+        }
     }
 ]
