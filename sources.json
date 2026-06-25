@@ -295,5 +295,38 @@
             "company": "span.company-name",
             "link": "a.fondo-publicacion-home"
         }
+    },
+    {
+        "name": "MinaJobs Togo",
+        "url": "https://tg.minajobs.net/emplois-au-togo/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing",
+            "title": "h3.job-title a",
+            "company": "div.job-company",
+            "link": "h3.job-title a"
+        }
+    },
+    {
+        "name": "MinaJobs Cameroun",
+        "url": "https://cameroun.minajobs.net/emplois-au-cameroun/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing",
+            "title": "h3.job-title a",
+            "company": "div.job-company",
+            "link": "h3.job-title a"
+        }
+    },
+    {
+        "name": "Emploi Dakar",
+        "url": "https://www.emploidakar.com/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing-item",
+            "title": "h3.job-listing-title a",
+            "company": "div.job-listing-company",
+            "link": "h3.job-listing-title a"
+        }
     }
 ]
