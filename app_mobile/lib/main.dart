@@ -452,7 +452,7 @@ class _HomeTabState extends State<HomeTab> {
       radius: const Radius.circular(10),
       interactive: true,
       child: RefreshIndicator(
-        onRefresh: () async { await Future.delayed(const Duration(seconds: 1)); },
+        onRefresh: _fetchOpportunites,
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
