@@ -559,5 +559,49 @@
             "company": "",
             "link": "h3 a, h4 a"
         }
+    },
+    {
+        "name": "Tectra Bénin",
+        "url": "https://www.tectra.bj/offres-emploi",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-offer, article",
+            "title": "h3 a, h2 a",
+            "company": "div.company",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "Reshuform Bénin",
+        "url": "https://www.reshuform.com/offres-demploi/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "article.post, div.job-item",
+            "title": "h3 a, h4 a",
+            "company": "",
+            "link": "h3 a, h4 a"
+        }
+    },
+    {
+        "name": "Emmac Corporation Bénin",
+        "url": "https://www.emmaccorporation.com/jobs",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.job-listing",
+            "title": "h3.job-title a",
+            "company": "",
+            "link": "h3.job-title a"
+        }
+    },
+    {
+        "name": "GRH Bénin",
+        "url": "https://www.grbrh.com/offres/",
+        "category": "Emploi",
+        "selectors": {
+            "container": "div.offre-item, article",
+            "title": "h4 a, h3 a",
+            "company": "",
+            "link": "a.read-more, h4 a"
+        }
     }
 ]
