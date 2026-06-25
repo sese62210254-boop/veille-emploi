@@ -12,7 +12,7 @@ def est_vraie_opportunite(titre: str, resume: str) -> bool:
     """Filtre ultra-strict : Analyse structurelle et semantique de l'annonce."""
     texte = (titre + " " + resume).lower()
     
-    # 1. Filtre Négatif ÉTENDU : Rejette brutalement le blabla institutionnel
+    # 1. Filtre Négatif ÉTENDU
     mots_bannis = [
         "tournée", "visite", "atelier", "séminaire", "lancement officiel", 
         "rencontre", "audience", "conseil des ministres", "déploiement", 
@@ -21,33 +21,44 @@ def est_vraie_opportunite(titre: str, resume: str) -> bool:
         "festival", "discours", "hommage", "journée nationale", "prise de contact", 
         "sensibilisation", "campagne", "examens", "bepc", "baccalauréat"
     ]
-    # Check if banned word is in TITLE (most important) or text
     for mot in mots_bannis:
         if mot in titre.lower() or mot in texte:
             return False
             
-    # 2. Mots-clés directs ULTRA-STRICTS (Phrases exactes, pas de mots isolés)
-    # On supprime "financement" ou "bourse" seuls car ils causent des faux positifs.
+    # 2. Mots-clés directs ULTRA-STRICTS (Phrases exactes, 0 ambiguïté)
     mots_directs_stricts = [
+        # Emploi / Concours
         "appel à candidature", "appel à candidatures", "appel d'offre", "appels d'offres",
         "avis de recrutement", "termes de référence", "manifestation d'intérêt",
         "recrutement de", "recrutement d'un", "offre d'emploi", "job opening", 
-        "job vacancy", "postes vacants"
+        "job vacancy", "postes vacants",
+        
+        # NOUVEAU : Financement & Projets (Les vraies formules pour les subventions)
+        "appel à projets", "appel à propositions", "fonds compétitif", 
+        "guichet de financement", "soumission de projets", "pitch deck", 
+        "soutien aux startups", "soutien aux pme", "financement des tpe"
     ]
     for mot in mots_directs_stricts:
         if mot in texte:
             return True
             
-    # 3. Score Structurel : Analyse de la présence des marqueurs d'une opportunité
+    # 3. Score Structurel : Analyse de la présence des marqueurs
     score = 0
     
+    # Marqueurs de Délai (Commun à tous)
     if any(m in texte for m in ["délai", "date limite", "au plus tard", "jusqu'au", "clôture", "deadline"]):
         score += 3
         
+    # Marqueurs d'Action (Commun à tous)
     if any(m in texte for m in ["postuler", "soumettre", "candidature", "dossier", "envoyer", "cv", "lettre de motivation", "tdr"]):
         score += 3
         
-    if any(m in texte for m in ["profil", "expérience", "diplôme", "bac+", "compétences", "exigences", "éligibilité", "qualification"]):
+    # Marqueurs de Profil (Emploi/Bourse)
+    if any(m in texte for m in ["profil", "expérience", "diplôme", "bac+", "compétences", "exigences", "qualification"]):
+        score += 2
+        
+    # NOUVEAU : Marqueurs spécifiques au Financement / Projets
+    if any(m in texte for m in ["critères d'éligibilité", "éligibles", "lignes directrices", "plan d'affaires", "business plan", "montant de la subvention", "enveloppe financière"]):
         score += 2
         
     return score >= 5
