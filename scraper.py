@@ -8,6 +8,50 @@ from urllib.parse import urljoin
 
 logger = logging.getLogger(__name__)
 
+def est_vraie_opportunite(titre: str, resume: str) -> bool:
+    """Filtre intelligent : Analyse structurelle et semantique de l'annonce."""
+    texte = (titre + " " + resume).lower()
+    
+    # 1. Filtre Négatif : Liste noire stricte (Bruit gouvernemental / presse)
+    mots_bannis = [
+        "célébration", "inauguration", "journée mondiale", "journée internationale",
+        "décès", "audience", "conseil des ministres", "compte rendu", 
+        "visite de travail", "adoption de", "remise de", "cérémonie", "festival",
+        "discours", "hommage", "journée nationale"
+    ]
+    for mot in mots_bannis:
+        if mot in texte:
+            return False
+            
+    # 2. Mots-clés directs : L'annonce affiche explicitement sa couleur
+    mots_directs = [
+        "recrutement", "recrute", "appel à candidature", "appel d'offre", 
+        "avis de recrutement", "bourse", "scholarship", "financement", 
+        "subvention", "concours", "manifestation d'intérêt"
+    ]
+    for mot in mots_directs:
+        if mot in texte:
+            return True
+            
+    # 3. Score Structurel : Analyse de la présence des marqueurs d'une opportunité
+    score = 0
+    
+    # Marqueurs temporels (Délai)
+    if any(m in texte for m in ["délai", "date limite", "au plus tard", "jusqu'au", "clôture", "deadline"]):
+        score += 3
+        
+    # Marqueurs d'action (Comment postuler)
+    if any(m in texte for m in ["postuler", "soumettre", "candidature", "dossier", "envoyer", "cv", "lettre de motivation", "tdr", "termes de référence"]):
+        score += 3
+        
+    # Marqueurs d'exigence (Profil recherché)
+    if any(m in texte for m in ["profil", "expérience", "diplôme", "bac+", "compétences", "exigences", "éligibilité", "qualification"]):
+        score += 2
+        
+    # Une annonce est validée si elle a suffisamment de structure (ex: délai + profil = 5)
+    return score >= 4
+
+
 def scrape_generic(db: Database, source: dict) -> int:
     """Scrapeur universel parametrable pour n'importe quel site"""
     url = source['url']
@@ -35,40 +79,36 @@ def scrape_generic(db: Database, source: dict) -> int:
                 lien = lien_tag['href'] if lien_tag else url
                 lien = urljoin(url, lien)
                 
-                # OPTIMISATION : Si l'offre est déjà dans la base, on passe à la suivante direct !
-                if db.is_opportunity_known(lien):
-                    continue
+                # Nettoyage des liens pour eviter les doublons de session
+                lien = lien.split('?session')[0]
                 
+                # Entreprise
                 entreprise = "Non precisee"
                 if selectors.get('company'):
                     emp_tag = offre.select_one(selectors['company'])
                     if emp_tag: entreprise = emp_tag.text.strip()
                 
-                # EXTRACTION DE LA VRAIE DESCRIPTION (visite de la page de l'offre)
+                # PRE-FILTRE : Empreinte connue ? (Titre + Source + Lien)
+                if db.is_opportunity_known(lien, titre, source['name'], ""):
+                    continue
+                
+                # EXTRACTION DE LA VRAIE DESCRIPTION
                 resume_text = ""
                 try:
-                    # Le robot clique virtuellement sur l'offre
                     detail_resp = requests.get(lien, headers=headers, timeout=10)
                     detail_soup = BeautifulSoup(detail_resp.text, 'html.parser')
-                    
-                    # Il cherche tous les paragraphes et listes
                     detail_elements = detail_soup.find_all(['p', 'li'])
                     bons_paragraphes = []
                     for element in detail_elements:
-                        texte = element.text.replace('\n', ' ').strip()
-                        # On ne garde que les vraies phrases (plus de 60 caractères) pour éviter les menus
-                        if len(texte) > 60 and '{' not in texte and '<' not in texte:
-                            # On évite de répéter le titre
-                            if not texte.lower().startswith(titre.lower()[:30]):
-                                bons_paragraphes.append(texte)
-                    
+                        texte_p = element.text.replace('\n', ' ').strip()
+                        if len(texte_p) > 60 and '{' not in texte_p and '<' not in texte_p:
+                            if not texte_p.lower().startswith(titre.lower()[:30]):
+                                bons_paragraphes.append(texte_p)
                     if bons_paragraphes:
-                        # On prend les 3 ou 4 premières phrases pertinentes
                         resume_text = " ".join(bons_paragraphes[:4])
                 except Exception as e:
                     pass
                 
-                # PLAN B : Si ça échoue, on prend le texte de la carte d'accueil
                 if not resume_text:
                     paragraphs = offre.find_all('p')
                     if paragraphs:
@@ -76,10 +116,13 @@ def scrape_generic(db: Database, source: dict) -> int:
                     else:
                         resume_text = offre.text.replace('\n', ' ').replace('\r', '').strip()
                 
-                # On nettoie les espaces multiples
                 resume_text = ' '.join(resume_text.split())
                 
-                # Limite pour l'application (on prend 250 caractères max pour un beau résumé)
+                # INTEGRATION DE L'INTELLIGENCE : Le robot juge l'opportunité
+                if not est_vraie_opportunite(titre, resume_text):
+                    logger.debug(f"Annonce rejetée (Bruit) : {titre[:50]}")
+                    continue
+                
                 resume = f"{resume_text[:250]}..." if len(resume_text) > 250 else resume_text
                 
                 # AUTO-CATÉGORISATION
@@ -124,11 +167,8 @@ def run_all_scrapers(db: Database):
     logger.info(f"Lancement du moteur asynchrone sur {len(sources)} sites en meme temps...")
     
     total_new = 0
-    # Multi-Threading Magique : 10 requetes simultanees
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        # On lance tous les scrapers en parallele
         futures = [executor.submit(scrape_generic, db, s) for s in sources]
-        
         for future in concurrent.futures.as_completed(futures):
             total_new += future.result()
             
