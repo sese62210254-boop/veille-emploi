@@ -397,27 +397,13 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   Future<void> _fetchOpportunites() async {
-    if (mounted && _opportunites.isEmpty) setState(() => _isLoading = true);
-    try {
-      final data = await supabase
-          .from('opportunites')
-          .select()
-          .order('date_decouverte', ascending: false)
-          .limit(200);
+    supabase.from('opportunites').stream(primaryKey: ['id']).order('date_decouverte', ascending: false).limit(200).listen((data) {
       if (mounted) {
         setState(() {
           _opportunites = List<Map<String, dynamic>>.from(data);
           _applyFilters();
           _isLoading = false;
         });
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Erreur: $e')));
-        setState(() => _isLoading = false);
-      }
-    }
-  }
       }
     }, onError: (error) {
       if (mounted) {
