@@ -361,5 +361,49 @@
             "company": "",
             "link": "a.btn, h5 a"
         }
+    },
+    {
+        "name": "Portail des Marchés Publics Bénin",
+        "url": "https://marches-publics.bj/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.card-body.avis-content, article",
+            "title": "h4, h5 a, h3 a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "ARMP Bénin (Appels d'offres)",
+        "url": "https://armp.bj/appels-offres",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.appel-offre-item, tr",
+            "title": "td.title a, h4 a",
+            "company": "",
+            "link": "a"
+        }
+    },
+    {
+        "name": "Gouvernement Bénin (Appels à projets)",
+        "url": "https://www.gouv.bj/actualites/appels-a-projets/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.article-item, article",
+            "title": "h3 a, h2 a",
+            "company": "",
+            "link": "h3 a, h2 a"
+        }
+    },
+    {
+        "name": "Port Autonome de Cotonou (Appels d'offres)",
+        "url": "https://portdecotonou.bj/appels-doffres/",
+        "category": "Financement",
+        "selectors": {
+            "container": "div.elementor-post, article",
+            "title": "h3.elementor-post__title a",
+            "company": "",
+            "link": "h3.elementor-post__title a"
+        }
     }
 ]
