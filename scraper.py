@@ -71,7 +71,7 @@ Contenu : {texte[:4000]}
     except Exception as e:
         logger.error(f"Erreur Gemini sur '{titre[:30]}': {e}")
         # En cas d'erreur API, on rejette par prudence pour eviter le spam
-        return {"est_opportunite": True}
+        return {"est_opportunite": False}
 
 
 
