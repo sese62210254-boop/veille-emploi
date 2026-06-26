@@ -30,7 +30,7 @@ def analyser_avec_gemini(titre: str, texte: str) -> dict:
         logger.error("GEMINI_API_KEY non definie. Filtrage IA desactive.")
         return {"est_opportunite": True, "categorie": "Emploi", "resume": texte[:200], "date_limite": "Voir sur le site"}
     
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
     
     prompt = f"""
 Tu es un assistant IA spécialisé dans le recrutement et les financements au Bénin et en Afrique.
