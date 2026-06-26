@@ -24,6 +24,8 @@ logger = logging.getLogger(__name__)
 import os
 
 def analyser_avec_gemini(titre: str, texte: str) -> dict:
+    import time
+    time.sleep(4.5) # Limite de l'API Gemini : 15 requetes / minute
     """Analyse le texte via l'API Gemini 1.5 Flash pour determiner s'il s'agit d'une opportunite et extraire les metadonnees."""
     api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
