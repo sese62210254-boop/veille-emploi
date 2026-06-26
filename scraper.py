@@ -299,7 +299,7 @@ def run_all_scrapers(db: Database):
 
     total_new = 0
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
 
         futures = [executor.submit(scrape_generic, db, s) for s in sources]
 
