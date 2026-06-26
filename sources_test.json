@@ -1,0 +1,13 @@
+[
+    {
+        "name": "JobBenin",
+        "url": "https://jobbenin.com/offres",
+        "category": "Emploi",
+        "selectors": {
+            "container": ".job-bx",
+            "title": "h4 a",
+            "company": ".company-name",
+            "link": "h4 a"
+        }
+    }
+]
