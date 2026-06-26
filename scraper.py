@@ -331,7 +331,7 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-                    detail_resp = requests.get(lien, headers=headers, timeout=10)
+                    detail_resp = requests.get(lien, headers=headers, timeout=10, verify=False)
 
 
 
