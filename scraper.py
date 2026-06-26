@@ -217,7 +217,6 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
             try:
-                logger.info(f'Trouvé élément html dans {source["name"]}')
 
 
 
@@ -231,7 +230,6 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
                 if not titre_tag:
-                    logger.info(f'Pas de titre trouvé dans {source["name"]}')
                     continue
 
 
@@ -329,7 +327,6 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
                 try:
-                logger.info(f'Trouvé élément html dans {source["name"]}')
 
 
 
