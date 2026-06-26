@@ -298,7 +298,7 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-                if db.is_opportunity_known(lien, titre, source['name'], ""):
+                if db.is_opportunity_known(lien):
 
 
 
