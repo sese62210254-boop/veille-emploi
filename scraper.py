@@ -46,7 +46,7 @@ def analyser_avec_gemini(titre: str, texte: str) -> dict:
 
     """Analyse le texte via l'API Gemini 1.5 Flash pour determiner s'il s'agit d'une opportunite et extraire les metadonnees."""
 
-    api_key = os.environ.get('GEMINI_API_KEY', '').strip()
+    api_key = os.environ.get('GEMINI_API_KEY')
 
     if not api_key:
 
@@ -56,7 +56,7 @@ def analyser_avec_gemini(titre: str, texte: str) -> dict:
 
     
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
 
     
 
@@ -215,6 +215,8 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
             try:
+                logger.info(f'Trouvé élément html dans {source["name"]}')
+
 
 
 
@@ -226,7 +228,9 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-                if not titre_tag: continue
+                if not titre_tag:
+                    logger.info(f'Pas de titre trouvé dans {source["name"]}')
+                    continue
 
 
 
@@ -298,7 +302,7 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-                if db.is_opportunity_known(lien):
+                if db.is_opportunity_known(lien, titre, source['name'], ""):
 
 
 
@@ -323,6 +327,8 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
                 try:
+                logger.info(f'Trouvé élément html dans {source["name"]}')
+
 
 
 
