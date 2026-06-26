@@ -1,3 +1,5 @@
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import requests
 
 
@@ -186,7 +188,7 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-        response = requests.get(url, headers=headers, timeout=15)
+        response = requests.get(url, headers=headers, timeout=15, verify=False)
 
 
 
