@@ -227,43 +227,13 @@ def scrape_generic(db: Database, source: dict) -> int:
 
                 # INTEGRATION DE L'INTELLIGENCE : Le robot juge l'opportunité sur 100% du texte
 
-                if not est_vraie_opportunite(titre, texte_complet_page):
-
-                    logger.info(f"Annonce rejetée (Bruit) : {titre[:50]}")
-
+                gemini_result = analyser_avec_gemini(titre, texte_complet_page)
+                if not gemini_result.get('est_opportunite', False):
+                    logger.info(f'Annonce rejetee par IA (Bruit) : {titre[:50]}')
                     continue
-
-                
-
-                resume = f"{resume_text[:250]}..." if len(resume_text) > 250 else resume_text
-
-                
-
-                # AUTO-CATÉGORISATION
-
-                texte_complet = (titre + " " + resume_text).lower()
-
-                type_opp = source['category']
-
-                if 'stage' in texte_complet or 'stagiaire' in texte_complet:
-
-                    type_opp = 'Stage'
-
-                elif any(m in texte_complet for m in ['webinaire', 'formation', 'masterclass']):
-
-                    type_opp = 'Formation'
-
-                elif 'bourse' in texte_complet or 'scholarship' in texte_complet:
-
-                    type_opp = 'Bourse'
-
-                elif 'concours' in texte_complet:
-
-                    type_opp = 'Concours'
-
-                elif 'emploi' in texte_complet or 'recrute' in texte_complet:
-
-                    type_opp = 'Emploi'
+                resume = gemini_result.get('resume', resume_text[:250])
+                type_opp = gemini_result.get('categorie', source['category'])
+                date_limite_ia = gemini_result.get('date_limite', 'Voir sur le site')
 
                 
 
@@ -279,7 +249,7 @@ def scrape_generic(db: Database, source: dict) -> int:
 
                     type_opp=type_opp,
 
-                    date_limite="Voir sur le site"
+                    date_limite=date_limite_ia
 
                 )
 
