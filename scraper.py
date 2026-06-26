@@ -46,7 +46,7 @@ def analyser_avec_gemini(titre: str, texte: str) -> dict:
 
     """Analyse le texte via l'API Gemini 1.5 Flash pour determiner s'il s'agit d'une opportunite et extraire les metadonnees."""
 
-    api_key = os.environ.get('GEMINI_API_KEY')
+    api_key = os.environ.get('GEMINI_API_KEY', '').strip()
 
     if not api_key:
 
@@ -56,7 +56,7 @@ def analyser_avec_gemini(titre: str, texte: str) -> dict:
 
     
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
     
 
@@ -450,14 +450,86 @@ def scrape_generic(db: Database, source: dict) -> int:
 
 
 
-                analyse = analyser_avec_gemini(titre, texte_complet_page)
-                if not analyse.get("est_opportunite", False):
-                    logger.info(f"Annonce rejetée par IA (Bruit) : {titre[:50]} | {analyse}")
+                if not est_vraie_opportunite(titre, texte_complet_page):
+
+
+
+                    logger.debug(f"Annonce rejetée (Bruit) : {titre[:50]}")
+
+
+
                     continue
+
+
+
                 
-                resume = analyse.get('resume', resume_text)
-                type_opp = analyse.get('categorie', source['category'])
-                date_limite = analyse.get('date_limite', 'Voir sur le site')
+
+
+
+                resume = f"{resume_text[:250]}..." if len(resume_text) > 250 else resume_text
+
+
+
+                
+
+
+
+                # AUTO-CATÉGORISATION
+
+
+
+                texte_complet = (titre + " " + resume_text).lower()
+
+
+
+                type_opp = source['category']
+
+
+
+                if 'stage' in texte_complet or 'stagiaire' in texte_complet:
+
+
+
+                    type_opp = 'Stage'
+
+
+
+                elif any(m in texte_complet for m in ['webinaire', 'formation', 'masterclass']):
+
+
+
+                    type_opp = 'Formation'
+
+
+
+                elif 'bourse' in texte_complet or 'scholarship' in texte_complet:
+
+
+
+                    type_opp = 'Bourse'
+
+
+
+                elif 'concours' in texte_complet:
+
+
+
+                    type_opp = 'Concours'
+
+
+
+                elif 'emploi' in texte_complet or 'recrute' in texte_complet:
+
+
+
+                    type_opp = 'Emploi'
+
+
+
+                
+
+
+
                 added = db.add_opportunity(
 
 
