@@ -1,739 +1,1344 @@
 [
-    {
-        "name": "JobBenin",
-        "url": "https://jobbenin.com/offres",
-        "category": "Emploi",
-        "selectors": {
-            "container": ".job-bx",
-            "title": "h4 a",
-            "company": ".company-name",
-            "link": "h4 a"
-        }
-    },
-    {
-        "name": "EmploiBenin",
-        "url": "https://www.emploibenin.com/recherche-jobs-benin",
-        "category": "Emploi",
-        "selectors": {
-            "container": ".card-job",
-            "title": "h3 a",
-            "company": "a.card-job-company",
-            "link": "h3 a"
-        }
-    },
-    {
-        "name": "GreatYop (Bourses)",
-        "url": "https://greatyop.com/bourses/",
-        "category": "Bourse",
-        "selectors": {
-            "container": "article.type-post",
-            "title": "h1.entry-title a, h2.entry-title a, h1.entry-title",
-            "company": "",
-            "link": "h1.entry-title a, h2.entry-title a"
-        }
-    },
-    {
-        "name": "Ministère Travail Bénin",
-        "url": "https://travail.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article",
-            "title": "h2 a",
-            "company": "",
-            "link": "h2 a"
-        }
-    },
-    {
-        "name": "UN Jobs Cotonou",
-        "url": "https://unjobs.org/duty_stations/coo",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job[id]",
-            "title": "a.jtitle",
-            "company": "",
-            "link": "a.jtitle"
-        }
-    },
-    {
-        "name": "Talents Plus Afrique",
-        "url": "https://www.talentsplusafrique.com/jns/index.php/offres-d-emploi.html",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.carousel-item div.row > div",
-            "title": "a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Anpe",
-        "url": "https://anpe.bj/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.ue_post_carousel_item",
-            "title": "div.uc_post_title",
-            "company": "",
-            "link": "a.uc_more_btn"
-        }
-    },
-    {
-        "name": "Jobbenin",
-        "url": "https://www.jobbenin.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-bx",
-            "title": "div.job-contant h4 a",
-            "company": "",
-            "link": "div.job-contant h4 a"
-        }
-    },
-    {
-        "name": "Novojob",
-        "url": "https://www.novojob.com/benin/offres-d-emploi",
-        "category": "Emploi",
-        "selectors": {
-            "container": "li.separator-bot",
-            "title": "h2.ellipsis",
-            "company": ".contact h6 span",
-            "link": ".bloc-right > .row-fluid > a"
-        }
-    },
-    {
-        "name": "Talentsplusafrique",
-        "url": "https://www.talentsplusafrique.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.card-formation",
-            "title": "div.text",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Travail",
-        "url": "https://travail.gouv.bj/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div#pills-home > div.rounded",
-            "title": "p",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Cdiscussion",
-        "url": "https://www.cdiscussion.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.study-card",
-            "title": "h5",
-            "company": "",
-            "link": "a.stretched-link"
-        }
-    },
-    {
-        "name": "Wiijob",
-        "url": "https://wiijob.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.elementor-image-box-wrapper",
-            "title": "h3.elementor-image-box-title a",
-            "company": "",
-            "link": "h3.elementor-image-box-title a"
-        }
-    },
-    {
-        "name": "Emploiburkina",
-        "url": "https://www.emploiburkina.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.last-offers-item",
-            "title": "h3 a",
-            "company": ".job-recruiter strong",
-            "link": "h3 a"
-        }
-    },
-    {
-        "name": "Novojob",
-        "url": "https://www.novojob.com/cote-d-ivoire/offres-d-emploi",
-        "category": "Emploi",
-        "selectors": {
-            "container": "li.separator-bot",
-            "title": "h2.ellipsis",
-            "company": "div.contact h6",
-            "link": "div.row-fluid > a"
-        }
-    },
-    {
-        "name": "Novojob",
-        "url": "https://www.novojob.com/senegal/offres-d-emploi",
-        "category": "Emploi",
-        "selectors": {
-            "container": "li.separator-bot",
-            "title": "h2.ellipsis",
-            "company": ".contact h6",
-            "link": "a.external-link"
-        }
-    },
-    {
-        "name": "Educarriere",
-        "url": "https://www.educarriere.ci/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.col-page",
-            "title": "div.contenido-publicacion-home h3",
-            "company": "",
-            "link": "a.fondo-publicacion-home"
-        }
-    },
-    {
-        "name": "Rmo-jobcenter",
-        "url": "https://www.rmo-jobcenter.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "ul.liste_mini_num li",
-            "title": "a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Ngojobsinafrica",
-        "url": "https://www.ngojobsinafrica.com/jobs/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "article.noo_job",
-            "title": "h2.loop-item-title a",
-            "company": "span.job-company a",
-            "link": "h2.loop-item-title a"
-        }
-    },
-    {
-        "name": "Unjobs",
-        "url": "https://unjobs.org/duty_stations/ben",
-        "category": "Emploi",
-        "selectors": {
-            "container": "article",
-            "title": "a.jtitle",
-            "company": "",
-            "link": "a.jtitle"
-        }
-    },
-    {
-        "name": "Campusfrance",
-        "url": "https://www.campusfrance.org/fr/bourses-etudiants-etrangers",
-        "category": "Bourse",
-        "selectors": {
-            "container": "article.node--view-mode-teaser",
-            "title": ".title",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Jeune Afrique Emploi",
-        "url": "https://emplois.jeuneafrique.com/offres-d-emploi/benin/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing",
-            "title": "h3.job-title a",
-            "company": "div.job-company",
-            "link": "h3.job-title a"
-        }
-    },
-    {
-        "name": "Mon Emploi Benin",
-        "url": "https://www.monemploibenin.com/offres",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.card-job",
-            "title": "h5.card-title a",
-            "company": "div.company-name",
-            "link": "h5.card-title a"
-        }
-    },
-    {
-        "name": "Bourses Afrique",
-        "url": "https://boursesafrique.com/category/bourses-detudes/",
-        "category": "Bourse",
-        "selectors": {
-            "container": "article.post",
-            "title": "h2.entry-title a",
-            "company": "",
-            "link": "h2.entry-title a"
-        }
-    },
-    {
-        "name": "AfricSearch Benin",
-        "url": "https://www.africsearch.com/offres-d-emploi",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.offer",
-            "title": "h3.offer-title a",
-            "company": "",
-            "link": "h3.offer-title a"
-        }
-    },
-    {
-        "name": "NGO Jobs in Africa (Benin)",
-        "url": "https://ngojobsinafrica.com/jobs/benin/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing",
-            "title": "h3.job-title a",
-            "company": "div.job-company",
-            "link": "h3.job-title a"
-        }
-    },
-    {
-        "name": "Educarriere",
-        "url": "https://emploi.educarriere.ci/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.col-page",
-            "title": "h3",
-            "company": "span.company-name",
-            "link": "a.fondo-publicacion-home"
-        }
-    },
-    {
-        "name": "MinaJobs Togo",
-        "url": "https://tg.minajobs.net/emplois-au-togo/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing",
-            "title": "h3.job-title a",
-            "company": "div.job-company",
-            "link": "h3.job-title a"
-        }
-    },
-    {
-        "name": "MinaJobs Cameroun",
-        "url": "https://cameroun.minajobs.net/emplois-au-cameroun/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing",
-            "title": "h3.job-title a",
-            "company": "div.job-company",
-            "link": "h3.job-title a"
-        }
-    },
-    {
-        "name": "Emploi Dakar",
-        "url": "https://www.emploidakar.com/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing-item",
-            "title": "h3.job-listing-title a",
-            "company": "div.job-listing-company",
-            "link": "h3.job-listing-title a"
-        }
-    },
-    {
-        "name": "MESRS Bénin (Bourses & Communiqués)",
-        "url": "https://enseignementsuperieur.gouv.bj/actualites",
-        "category": "Bourse",
-        "selectors": {
-            "container": "div.actualite-item, article",
-            "title": "h4 a, h3 a, h2 a",
-            "company": "",
-            "link": "h4 a, h3 a, h2 a"
-        }
-    },
-    {
-        "name": "ADPME Bénin (Financements PME)",
-        "url": "https://adpme.bj/opportunites/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.opportunite-card, article",
-            "title": "h3 a",
-            "company": "",
-            "link": "h3 a, a.btn-read-more"
-        }
-    },
-    {
-        "name": "CCI Bénin (Appels à projets)",
-        "url": "https://cci.bj/appels-a-projets",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.card-appel, div.row.mb-4",
-            "title": "h4, h5 a",
-            "company": "",
-            "link": "a.btn, h5 a"
-        }
-    },
-    {
-        "name": "Portail des Marchés Publics Bénin",
-        "url": "https://marches-publics.bj/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.card-body.avis-content, article",
-            "title": "h4, h5 a, h3 a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "ARMP Bénin (Appels d'offres)",
-        "url": "https://armp.bj/appels-offres",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.appel-offre-item, tr",
-            "title": "td.title a, h4 a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Gouvernement Bénin (Appels à projets)",
-        "url": "https://www.gouv.bj/actualites/appels-a-projets/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.article-item, article",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "Port Autonome de Cotonou (Appels d'offres)",
-        "url": "https://portdecotonou.bj/appels-doffres/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.elementor-post, article",
-            "title": "h3.elementor-post__title a",
-            "company": "",
-            "link": "h3.elementor-post__title a"
-        }
-    },
-    {
-        "name": "Agence Universitaire de la Francophonie (Appels)",
-        "url": "https://www.auf.org/nouvelles/appels-a-candidatures/",
-        "category": "Financement",
-        "selectors": {
-            "container": "article.card-news",
-            "title": "h3.card-title a",
-            "company": "",
-            "link": "h3.card-title a"
-        }
-    },
-    {
-        "name": "Ambassade de France au Bénin (Bourses)",
-        "url": "https://bj.ambafrance.org/Bourses-d-etudes-et-de-stages",
-        "category": "Bourse",
-        "selectors": {
-            "container": "li.article",
-            "title": "h3.titre-article a",
-            "company": "",
-            "link": "h3.titre-article a"
-        }
-    },
-    {
-        "name": "UNFPA Bénin",
-        "url": "https://benin.unfpa.org/fr/vacancies",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.views-row",
-            "title": "span.field-content a",
-            "company": "",
-            "link": "span.field-content a"
-        }
-    },
-    {
-        "name": "Banque Mondiale (Bénin)",
-        "url": "https://www.banquemondiale.org/fr/country/benin",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.blog-item",
-            "title": "h4 a",
-            "company": "",
-            "link": "h4 a"
-        }
-    },
-    {
-        "name": "FNDA Bénin (Fonds Agricole)",
-        "url": "https://fnda.bj/actualites",
-        "category": "Financement",
-        "selectors": {
-            "container": "article.post, div.blog-post",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "FNM Bénin (Microfinance)",
-        "url": "https://fnm.bj/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.actualite-item, article",
-            "title": "h4 a, h3 a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Ministère de la Santé Bénin (Recrutements)",
-        "url": "https://sante.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article.post, div.news-item",
-            "title": "h3 a, h4 a",
-            "company": "",
-            "link": "h3 a, h4 a"
-        }
-    },
-    {
-        "name": "Ministère de la Justice Bénin",
-        "url": "https://justice.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article, div.actualite",
-            "title": "h2 a, h3 a",
-            "company": "",
-            "link": "h2 a, h3 a"
-        }
-    },
-    {
-        "name": "Ministère de l'Agriculture Bénin",
-        "url": "https://agriculture.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article.post, div.news-item",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "Ministère du Cadre de Vie Bénin",
-        "url": "https://cadredevie.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article.post, div.news-item",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "Ministère des Affaires Sociales Bénin",
-        "url": "https://social.gouv.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article.post, div.news-item",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "Portail des Services Publics Bénin",
-        "url": "https://service-public.bj/actualites",
-        "category": "Concours",
-        "selectors": {
-            "container": "article, div.actualite-card",
-            "title": "h3 a, h4 a",
-            "company": "",
-            "link": "h3 a, h4 a"
-        }
-    },
-    {
-        "name": "Benin Job",
-        "url": "https://beninjob.com/emplois",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-item, div.card",
-            "title": "h2 a, h3 a",
-            "company": "span.company, div.company",
-            "link": "h2 a, h3 a"
-        }
-    },
-    {
-        "name": "eGoZola Bénin",
-        "url": "https://www.egozola.com/offres-d-emploi-au-benin",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-card, li",
-            "title": "h3 a, h4 a",
-            "company": "",
-            "link": "h3 a, h4 a"
-        }
-    },
-    {
-        "name": "Tectra Bénin",
-        "url": "https://www.tectra.bj/offres-emploi",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-offer, article",
-            "title": "h3 a, h2 a",
-            "company": "div.company",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "Reshuform Bénin",
-        "url": "https://www.reshuform.com/offres-demploi/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "article.post, div.job-item",
-            "title": "h3 a, h4 a",
-            "company": "",
-            "link": "h3 a, h4 a"
-        }
-    },
-    {
-        "name": "Emmac Corporation Bénin",
-        "url": "https://www.emmaccorporation.com/jobs",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-listing",
-            "title": "h3.job-title a",
-            "company": "",
-            "link": "h3.job-title a"
-        }
-    },
-    {
-        "name": "GRH Bénin",
-        "url": "https://www.grbrh.com/offres/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.offre-item, article",
-            "title": "h4 a, h3 a",
-            "company": "",
-            "link": "a.read-more, h4 a"
-        }
-    },
-    {
-        "name": "Talents Plus Conseils Bénin",
-        "url": "https://talents-plus.com/offres/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job_listing, article",
-            "title": "h3 a",
-            "company": "div.company",
-            "link": "h3 a"
-        }
-    },
-    {
-        "name": "Pro Work Agency Bénin",
-        "url": "https://agenceprowork.com/jobs/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.job-item, li.job",
-            "title": "h4 a, h3 a",
-            "company": "",
-            "link": "h4 a, h3 a"
-        }
-    },
-    {
-        "name": "Ylomi Bénin",
-        "url": "https://www.ylomi.net/jobs",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.card-job, div.job-post",
-            "title": "h5.card-title, h3",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Sèmè City (Offres & Appels)",
-        "url": "https://semecity.bj/appels-a-candidatures/",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.elementor-post, article",
-            "title": "h3 a",
-            "company": "",
-            "link": "h3 a"
-        }
-    },
-    {
-        "name": "OIF (Francophonie) - Appels & Recrutements",
-        "url": "https://www.francophonie.org/appels-a-candidatures",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.views-row, article",
-            "title": "h3 a, h2 a",
-            "company": "",
-            "link": "h3 a, h2 a"
-        }
-    },
-    {
-        "name": "CEDEAO (Offres & Emplois)",
-        "url": "https://ecowas.int/careers/?lang=fr",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.career-item, tr",
-            "title": "h4 a, td a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "PNUD (UNDP Jobs)",
-        "url": "https://jobs.undp.org/cj_view_jobs.cfm",
-        "category": "Emploi",
-        "selectors": {
-            "container": "tr",
-            "title": "td a.job-title",
-            "company": "",
-            "link": "td a.job-title"
-        }
-    },
-    {
-        "name": "Banque Africaine de Développement (BAD)",
-        "url": "https://www.afdb.org/fr/about-us/careers",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.views-row, tr",
-            "title": "span.field-content a, td a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "UEMOA (Appels et Recrutements)",
-        "url": "https://www.uemoa.int/fr/offres-d-emplois",
-        "category": "Financement",
-        "selectors": {
-            "container": "div.views-row, article",
-            "title": "span.field-content a, h3 a",
-            "company": "",
-            "link": "span.field-content a, h3 a"
-        }
-    },
-    {
-        "name": "BOAD (Carrières)",
-        "url": "https://www.boad.org/carrieres/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.offre-emploi-item, tr",
-            "title": "h4 a, td a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "OMS (WHO Careers)",
-        "url": "https://careers.who.int/careers/",
-        "category": "Emploi",
-        "selectors": {
-            "container": "tr.job-row, div.job-listing",
-            "title": "td.job-title a, h3 a",
-            "company": "",
-            "link": "a"
-        }
-    },
-    {
-        "name": "Organisation Internationale pour les Migrations (OIM)",
-        "url": "https://www.iom.int/fr/recruitment",
-        "category": "Emploi",
-        "selectors": {
-            "container": "div.views-row",
-            "title": "span.field-content a",
-            "company": "",
-            "link": "span.field-content a"
-        }
+  {
+    "name": "JobBenin",
+    "url": "https://jobbenin.com/offres",
+    "category": "Emploi",
+    "selectors": {
+      "container": ".job-bx",
+      "title": "h4 a",
+      "company": ".company-name",
+      "link": "h4 a"
     }
+  },
+  {
+    "name": "EmploiBenin",
+    "url": "https://www.emploibenin.com/recherche-jobs-benin",
+    "category": "Emploi",
+    "selectors": {
+      "container": ".card-job",
+      "title": "h3 a",
+      "company": "a.card-job-company",
+      "link": "h3 a"
+    }
+  },
+  {
+    "name": "GreatYop (Bourses)",
+    "url": "https://greatyop.com/bourses/",
+    "category": "Bourse",
+    "selectors": {
+      "container": "article.type-post",
+      "title": "h1.entry-title a, h2.entry-title a, h1.entry-title",
+      "company": "",
+      "link": "h1.entry-title a, h2.entry-title a"
+    }
+  },
+  {
+    "name": "Ministère Travail Bénin",
+    "url": "https://travail.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article",
+      "title": "h2 a",
+      "company": "",
+      "link": "h2 a"
+    }
+  },
+  {
+    "name": "UN Jobs Cotonou",
+    "url": "https://unjobs.org/duty_stations/coo",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job[id]",
+      "title": "a.jtitle",
+      "company": "",
+      "link": "a.jtitle"
+    }
+  },
+  {
+    "name": "Talents Plus Afrique",
+    "url": "https://www.talentsplusafrique.com/jns/index.php/offres-d-emploi.html",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.carousel-item div.row > div",
+      "title": "a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Anpe",
+    "url": "https://anpe.bj/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.ue_post_carousel_item",
+      "title": "div.uc_post_title",
+      "company": "",
+      "link": "a.uc_more_btn"
+    }
+  },
+  {
+    "name": "Jobbenin",
+    "url": "https://www.jobbenin.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-bx",
+      "title": "div.job-contant h4 a",
+      "company": "",
+      "link": "div.job-contant h4 a"
+    }
+  },
+  {
+    "name": "Novojob",
+    "url": "https://www.novojob.com/benin/offres-d-emploi",
+    "category": "Emploi",
+    "selectors": {
+      "container": "li.separator-bot",
+      "title": "h2.ellipsis",
+      "company": ".contact h6 span",
+      "link": ".bloc-right > .row-fluid > a"
+    }
+  },
+  {
+    "name": "Talentsplusafrique",
+    "url": "https://www.talentsplusafrique.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.card-formation",
+      "title": "div.text",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Travail",
+    "url": "https://travail.gouv.bj/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div#pills-home > div.rounded",
+      "title": "p",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Cdiscussion",
+    "url": "https://www.cdiscussion.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.study-card",
+      "title": "h5",
+      "company": "",
+      "link": "a.stretched-link"
+    }
+  },
+  {
+    "name": "Wiijob",
+    "url": "https://wiijob.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.elementor-image-box-wrapper",
+      "title": "h3.elementor-image-box-title a",
+      "company": "",
+      "link": "h3.elementor-image-box-title a"
+    }
+  },
+  {
+    "name": "Emploiburkina",
+    "url": "https://www.emploiburkina.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.last-offers-item",
+      "title": "h3 a",
+      "company": ".job-recruiter strong",
+      "link": "h3 a"
+    }
+  },
+  {
+    "name": "Novojob",
+    "url": "https://www.novojob.com/cote-d-ivoire/offres-d-emploi",
+    "category": "Emploi",
+    "selectors": {
+      "container": "li.separator-bot",
+      "title": "h2.ellipsis",
+      "company": "div.contact h6",
+      "link": "div.row-fluid > a"
+    }
+  },
+  {
+    "name": "Novojob",
+    "url": "https://www.novojob.com/senegal/offres-d-emploi",
+    "category": "Emploi",
+    "selectors": {
+      "container": "li.separator-bot",
+      "title": "h2.ellipsis",
+      "company": ".contact h6",
+      "link": "a.external-link"
+    }
+  },
+  {
+    "name": "Educarriere",
+    "url": "https://www.educarriere.ci/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.col-page",
+      "title": "div.contenido-publicacion-home h3",
+      "company": "",
+      "link": "a.fondo-publicacion-home"
+    }
+  },
+  {
+    "name": "Rmo-jobcenter",
+    "url": "https://www.rmo-jobcenter.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "ul.liste_mini_num li",
+      "title": "a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Ngojobsinafrica",
+    "url": "https://www.ngojobsinafrica.com/jobs/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "article.noo_job",
+      "title": "h2.loop-item-title a",
+      "company": "span.job-company a",
+      "link": "h2.loop-item-title a"
+    }
+  },
+  {
+    "name": "Unjobs",
+    "url": "https://unjobs.org/duty_stations/ben",
+    "category": "Emploi",
+    "selectors": {
+      "container": "article",
+      "title": "a.jtitle",
+      "company": "",
+      "link": "a.jtitle"
+    }
+  },
+  {
+    "name": "Campusfrance",
+    "url": "https://www.campusfrance.org/fr/bourses-etudiants-etrangers",
+    "category": "Bourse",
+    "selectors": {
+      "container": "article.node--view-mode-teaser",
+      "title": ".title",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Jeune Afrique Emploi",
+    "url": "https://emplois.jeuneafrique.com/offres-d-emploi/benin/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing",
+      "title": "h3.job-title a",
+      "company": "div.job-company",
+      "link": "h3.job-title a"
+    }
+  },
+  {
+    "name": "Mon Emploi Benin",
+    "url": "https://www.monemploibenin.com/offres",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.card-job",
+      "title": "h5.card-title a",
+      "company": "div.company-name",
+      "link": "h5.card-title a"
+    }
+  },
+  {
+    "name": "Bourses Afrique",
+    "url": "https://boursesafrique.com/category/bourses-detudes/",
+    "category": "Bourse",
+    "selectors": {
+      "container": "article.post",
+      "title": "h2.entry-title a",
+      "company": "",
+      "link": "h2.entry-title a"
+    }
+  },
+  {
+    "name": "AfricSearch Benin",
+    "url": "https://www.africsearch.com/offres-d-emploi",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.offer",
+      "title": "h3.offer-title a",
+      "company": "",
+      "link": "h3.offer-title a"
+    }
+  },
+  {
+    "name": "NGO Jobs in Africa (Benin)",
+    "url": "https://ngojobsinafrica.com/jobs/benin/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing",
+      "title": "h3.job-title a",
+      "company": "div.job-company",
+      "link": "h3.job-title a"
+    }
+  },
+  {
+    "name": "Educarriere",
+    "url": "https://emploi.educarriere.ci/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.col-page",
+      "title": "h3",
+      "company": "span.company-name",
+      "link": "a.fondo-publicacion-home"
+    }
+  },
+  {
+    "name": "MinaJobs Togo",
+    "url": "https://tg.minajobs.net/emplois-au-togo/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing",
+      "title": "h3.job-title a",
+      "company": "div.job-company",
+      "link": "h3.job-title a"
+    }
+  },
+  {
+    "name": "MinaJobs Cameroun",
+    "url": "https://cameroun.minajobs.net/emplois-au-cameroun/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing",
+      "title": "h3.job-title a",
+      "company": "div.job-company",
+      "link": "h3.job-title a"
+    }
+  },
+  {
+    "name": "Emploi Dakar",
+    "url": "https://www.emploidakar.com/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing-item",
+      "title": "h3.job-listing-title a",
+      "company": "div.job-listing-company",
+      "link": "h3.job-listing-title a"
+    }
+  },
+  {
+    "name": "MESRS Bénin (Bourses & Communiqués)",
+    "url": "https://enseignementsuperieur.gouv.bj/actualites",
+    "category": "Bourse",
+    "selectors": {
+      "container": "div.actualite-item, article",
+      "title": "h4 a, h3 a, h2 a",
+      "company": "",
+      "link": "h4 a, h3 a, h2 a"
+    }
+  },
+  {
+    "name": "ADPME Bénin (Financements PME)",
+    "url": "https://adpme.bj/opportunites/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.opportunite-card, article",
+      "title": "h3 a",
+      "company": "",
+      "link": "h3 a, a.btn-read-more"
+    }
+  },
+  {
+    "name": "CCI Bénin (Appels à projets)",
+    "url": "https://cci.bj/appels-a-projets",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.card-appel, div.row.mb-4",
+      "title": "h4, h5 a",
+      "company": "",
+      "link": "a.btn, h5 a"
+    }
+  },
+  {
+    "name": "Portail des Marchés Publics Bénin",
+    "url": "https://marches-publics.bj/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.card-body.avis-content, article",
+      "title": "h4, h5 a, h3 a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "ARMP Bénin (Appels d'offres)",
+    "url": "https://armp.bj/appels-offres",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.appel-offre-item, tr",
+      "title": "td.title a, h4 a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Gouvernement Bénin (Appels à projets)",
+    "url": "https://www.gouv.bj/actualites/appels-a-projets/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.article-item, article",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "Port Autonome de Cotonou (Appels d'offres)",
+    "url": "https://portdecotonou.bj/appels-doffres/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.elementor-post, article",
+      "title": "h3.elementor-post__title a",
+      "company": "",
+      "link": "h3.elementor-post__title a"
+    }
+  },
+  {
+    "name": "Agence Universitaire de la Francophonie (Appels)",
+    "url": "https://www.auf.org/nouvelles/appels-a-candidatures/",
+    "category": "Financement",
+    "selectors": {
+      "container": "article.card-news",
+      "title": "h3.card-title a",
+      "company": "",
+      "link": "h3.card-title a"
+    }
+  },
+  {
+    "name": "Ambassade de France au Bénin (Bourses)",
+    "url": "https://bj.ambafrance.org/Bourses-d-etudes-et-de-stages",
+    "category": "Bourse",
+    "selectors": {
+      "container": "li.article",
+      "title": "h3.titre-article a",
+      "company": "",
+      "link": "h3.titre-article a"
+    }
+  },
+  {
+    "name": "UNFPA Bénin",
+    "url": "https://benin.unfpa.org/fr/vacancies",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.views-row",
+      "title": "span.field-content a",
+      "company": "",
+      "link": "span.field-content a"
+    }
+  },
+  {
+    "name": "Banque Mondiale (Bénin)",
+    "url": "https://www.banquemondiale.org/fr/country/benin",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.blog-item",
+      "title": "h4 a",
+      "company": "",
+      "link": "h4 a"
+    }
+  },
+  {
+    "name": "FNDA Bénin (Fonds Agricole)",
+    "url": "https://fnda.bj/actualites",
+    "category": "Financement",
+    "selectors": {
+      "container": "article.post, div.blog-post",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "FNM Bénin (Microfinance)",
+    "url": "https://fnm.bj/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.actualite-item, article",
+      "title": "h4 a, h3 a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Ministère de la Santé Bénin (Recrutements)",
+    "url": "https://sante.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article.post, div.news-item",
+      "title": "h3 a, h4 a",
+      "company": "",
+      "link": "h3 a, h4 a"
+    }
+  },
+  {
+    "name": "Ministère de la Justice Bénin",
+    "url": "https://justice.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article, div.actualite",
+      "title": "h2 a, h3 a",
+      "company": "",
+      "link": "h2 a, h3 a"
+    }
+  },
+  {
+    "name": "Ministère de l'Agriculture Bénin",
+    "url": "https://agriculture.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article.post, div.news-item",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "Ministère du Cadre de Vie Bénin",
+    "url": "https://cadredevie.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article.post, div.news-item",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "Ministère des Affaires Sociales Bénin",
+    "url": "https://social.gouv.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article.post, div.news-item",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "Portail des Services Publics Bénin",
+    "url": "https://service-public.bj/actualites",
+    "category": "Concours",
+    "selectors": {
+      "container": "article, div.actualite-card",
+      "title": "h3 a, h4 a",
+      "company": "",
+      "link": "h3 a, h4 a"
+    }
+  },
+  {
+    "name": "Benin Job",
+    "url": "https://beninjob.com/emplois",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-item, div.card",
+      "title": "h2 a, h3 a",
+      "company": "span.company, div.company",
+      "link": "h2 a, h3 a"
+    }
+  },
+  {
+    "name": "eGoZola Bénin",
+    "url": "https://www.egozola.com/offres-d-emploi-au-benin",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-card, li",
+      "title": "h3 a, h4 a",
+      "company": "",
+      "link": "h3 a, h4 a"
+    }
+  },
+  {
+    "name": "Tectra Bénin",
+    "url": "https://www.tectra.bj/offres-emploi",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-offer, article",
+      "title": "h3 a, h2 a",
+      "company": "div.company",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "Reshuform Bénin",
+    "url": "https://www.reshuform.com/offres-demploi/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "article.post, div.job-item",
+      "title": "h3 a, h4 a",
+      "company": "",
+      "link": "h3 a, h4 a"
+    }
+  },
+  {
+    "name": "Emmac Corporation Bénin",
+    "url": "https://www.emmaccorporation.com/jobs",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-listing",
+      "title": "h3.job-title a",
+      "company": "",
+      "link": "h3.job-title a"
+    }
+  },
+  {
+    "name": "GRH Bénin",
+    "url": "https://www.grbrh.com/offres/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.offre-item, article",
+      "title": "h4 a, h3 a",
+      "company": "",
+      "link": "a.read-more, h4 a"
+    }
+  },
+  {
+    "name": "Talents Plus Conseils Bénin",
+    "url": "https://talents-plus.com/offres/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job_listing, article",
+      "title": "h3 a",
+      "company": "div.company",
+      "link": "h3 a"
+    }
+  },
+  {
+    "name": "Pro Work Agency Bénin",
+    "url": "https://agenceprowork.com/jobs/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.job-item, li.job",
+      "title": "h4 a, h3 a",
+      "company": "",
+      "link": "h4 a, h3 a"
+    }
+  },
+  {
+    "name": "Ylomi Bénin",
+    "url": "https://www.ylomi.net/jobs",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.card-job, div.job-post",
+      "title": "h5.card-title, h3",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Sèmè City (Offres & Appels)",
+    "url": "https://semecity.bj/appels-a-candidatures/",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.elementor-post, article",
+      "title": "h3 a",
+      "company": "",
+      "link": "h3 a"
+    }
+  },
+  {
+    "name": "OIF (Francophonie) - Appels & Recrutements",
+    "url": "https://www.francophonie.org/appels-a-candidatures",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.views-row, article",
+      "title": "h3 a, h2 a",
+      "company": "",
+      "link": "h3 a, h2 a"
+    }
+  },
+  {
+    "name": "CEDEAO (Offres & Emplois)",
+    "url": "https://ecowas.int/careers/?lang=fr",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.career-item, tr",
+      "title": "h4 a, td a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "PNUD (UNDP Jobs)",
+    "url": "https://jobs.undp.org/cj_view_jobs.cfm",
+    "category": "Emploi",
+    "selectors": {
+      "container": "tr",
+      "title": "td a.job-title",
+      "company": "",
+      "link": "td a.job-title"
+    }
+  },
+  {
+    "name": "Banque Africaine de Développement (BAD)",
+    "url": "https://www.afdb.org/fr/about-us/careers",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.views-row, tr",
+      "title": "span.field-content a, td a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "UEMOA (Appels et Recrutements)",
+    "url": "https://www.uemoa.int/fr/offres-d-emplois",
+    "category": "Financement",
+    "selectors": {
+      "container": "div.views-row, article",
+      "title": "span.field-content a, h3 a",
+      "company": "",
+      "link": "span.field-content a, h3 a"
+    }
+  },
+  {
+    "name": "BOAD (Carrières)",
+    "url": "https://www.boad.org/carrieres/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.offre-emploi-item, tr",
+      "title": "h4 a, td a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "OMS (WHO Careers)",
+    "url": "https://careers.who.int/careers/",
+    "category": "Emploi",
+    "selectors": {
+      "container": "tr.job-row, div.job-listing",
+      "title": "td.job-title a, h3 a",
+      "company": "",
+      "link": "a"
+    }
+  },
+  {
+    "name": "Organisation Internationale pour les Migrations (OIM)",
+    "url": "https://www.iom.int/fr/recruitment",
+    "category": "Emploi",
+    "selectors": {
+      "container": "div.views-row",
+      "title": "span.field-content a",
+      "company": "",
+      "link": "span.field-content a"
+    }
+  },
+  {
+    "url": "https://gouv.bj",
+    "nom": "Gouvernement du Bénin",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://sica.anpe.bj",
+    "nom": "SICA ANPE",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://service-public.bj",
+    "nom": "Service Public Bénin",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://azoli.gouv.bj",
+    "nom": "Programme Azôli",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://fnda.agriculture.gouv.bj",
+    "nom": "FNDA",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://agriculture.gouv.bj",
+    "nom": "MAEP",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://songhai.org",
+    "nom": "Centre Songhaï",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://ccibenin.org",
+    "nom": "CCI Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://semecity.bj",
+    "nom": "Sèmè City",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://benin.un.org",
+    "nom": "Nations Unies au Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://jobs.unicef.org",
+    "nom": "UNICEF Careers",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://undp.org/fr/benin",
+    "nom": "PNUD Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://fao.org",
+    "nom": "FAO Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://unfpa.org",
+    "nom": "UNFPA Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://unesco.org",
+    "nom": "UNESCO",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://francophonie.org",
+    "nom": "OIF",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://jeunesse.francophonie.org",
+    "nom": "Portail Jeunesse Francophonie",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://eeas.europa.eu",
+    "nom": "Union européenne au Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://afd.fr",
+    "nom": "AFD",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://giz.de",
+    "nom": "GIZ Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://enabel.be",
+    "nom": "Enabel Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://luxdev.lu",
+    "nom": "LuxDev",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://worldbank.org",
+    "nom": "Banque mondiale",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://credi-ong.org",
+    "nom": "CREDI-ONG",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://cis-benin.org",
+    "nom": "CIS-Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://terresrouges.be",
+    "nom": "Terres Rouges Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://suco.org",
+    "nom": "SUCO Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://bees-ong.org",
+    "nom": "BEES ONG",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://jvebenin.org",
+    "nom": "JVE Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://obepab.bj",
+    "nom": "OBEPAB",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://plan-international.org",
+    "nom": "Plan International Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://care.org",
+    "nom": "CARE International Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://crs.org",
+    "nom": "CRS Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://bj.ambafrance.org",
+    "nom": "Ambassade de France au Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://if-benin.com",
+    "nom": "Institut Français du Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://campusfrance.org",
+    "nom": "Campus France Bénin",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://bj.usembassy.gov",
+    "nom": "Ambassade des États-Unis au Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://cotonou.diplo.de",
+    "nom": "Ambassade d’Allemagne au Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://international.gc.ca",
+    "nom": "Ambassade du Canada",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://linkedin.com",
+    "nom": "LinkedIn",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://setondji.org",
+    "nom": "Setondji",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://yop.l-frii.com",
+    "nom": "YOP L-FRII",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://unjobs.org",
+    "nom": "UN Jobs / UN Talent",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://untalent.org",
+    "nom": "UN Jobs / UN Talent",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://c3e-uac.bj",
+    "nom": "C3E-UAC",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://uacstartupvalley.com",
+    "nom": "UAC Startup Valley",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://uac.bj",
+    "nom": "Université d’Abomey-Calavi",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://univ-parakou.bj",
+    "nom": "Université de Parakou",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://fondationmastercard-uac.org",
+    "nom": "Fondation Mastercard / UAC",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://auf.org",
+    "nom": "AUF Afrique de l’Ouest",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://erasmus-plus.ec.europa.eu",
+    "nom": "Erasmus+ Afrique / Union européenne",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://daad.de",
+    "nom": "DAAD Afrique de l’Ouest",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://bj.emb-japan.go.jp",
+    "nom": "Ambassade du Japon au Bénin",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://bj.china-embassy.gov.cn",
+    "nom": "Ambassade de Chine au Bénin",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://indianembassycotonou.gov.in",
+    "nom": "Ambassade d’Inde au Bénin",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://netherlandsandyou.nl",
+    "nom": "Ambassade des Pays-Bas au Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://eda.admin.ch",
+    "nom": "Ambassade de Suisse / Coopération suisse",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://swisscontact.org",
+    "nom": "Swisscontact Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://france-volontaires.org",
+    "nom": "France Volontaires Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://planete-urgence.org",
+    "nom": "Planète Urgence",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://ecobenin.org",
+    "nom": "Eco-Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://abedong.org",
+    "nom": "ABED ONG",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://casad-int.org",
+    "nom": "CASAD-Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://ong-racines.org",
+    "nom": "RACINES ONG",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://croixrougebenin.org",
+    "nom": "Croix-Rouge Béninoise",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://educo.org",
+    "nom": "Educo Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://fhi360.org",
+    "nom": "FHI 360 Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://technoserve.org",
+    "nom": "TechnoServe Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://snv.org",
+    "nom": "SNV Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://wvi.org",
+    "nom": "World Vision Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://medecinsdumonde.org",
+    "nom": "Médecins du Monde Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://psi.org",
+    "nom": "PSI / ABMS Bénin",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://blolab.bj",
+    "nom": "Blolab",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://etrilabs.com",
+    "nom": "EtriLabs",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://africadesign.school",
+    "nom": "Africa Design School",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://lecentre.bj",
+    "nom": "Le Centre",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://adpme.bj",
+    "nom": "ADPME Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://apiex.bj",
+    "nom": "APIEx Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://adn.bj",
+    "nom": "Agence de Développement du Numérique",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://asin.bj",
+    "nom": "ASIN Bénin",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://mtn.bj",
+    "nom": "MTN Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://moov-africa.bj",
+    "nom": "Moov Africa Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://sbin.bj",
+    "nom": "SBIN / Celtiis",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://orabank.net",
+    "nom": "Orabank Groupe",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://ecobank.com",
+    "nom": "Ecobank Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://boabenin.com",
+    "nom": "BOA Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://groupensia.com",
+    "nom": "NSIA Banque / Assurance",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://coris.bank",
+    "nom": "Coris Bank Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://societegenerale.bj",
+    "nom": "Société Générale Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://stagesbenin.com",
+    "nom": "StagesBénin",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://jobrelais.com",
+    "nom": "JobRelais",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://emploi.bsmgroupe.com",
+    "nom": "BSM Groupe Emploi",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://jobs.orificegroup.net",
+    "nom": "Orifice Jobs",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://afriqueemplois.com",
+    "nom": "Afrique Emplois",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://greatyop.com",
+    "nom": "Greatyop",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://afri-carrieres.com",
+    "nom": "Afri-Carrières",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://reliefweb.int",
+    "nom": "ReliefWeb",
+    "type": "ONG/International"
+  },
+  {
+    "url": "https://ancb.bj",
+    "nom": "ANCB - Association Nationale des Communes du Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://maisondelasocietecivile.bj",
+    "nom": "Maison de la Société Civile du Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://cnosben.org",
+    "nom": "CNOS-Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://febefoot.bj",
+    "nom": "Fédération Béninoise de Football",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://numerique.gouv.bj",
+    "nom": "Ministère du Numérique et de la Digitalisation",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://enseignementsuperieur.gouv.bj",
+    "nom": "Ministère de l’Enseignement Supérieur",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://enseignementsecondaire.gouv.bj",
+    "nom": "Ministère des Enseignements Secondaire, Technique et Formation Professionnelle",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://social.gouv.bj",
+    "nom": "Ministère des Affaires Sociales et de la Microfinance",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://cadredevie.gouv.bj",
+    "nom": "Ministère du Cadre de Vie et des Transports",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://sante.gouv.bj",
+    "nom": "Ministère de la Santé du Bénin",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://abe.bj",
+    "nom": "Agence Béninoise pour l’Environnement",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://anmcq.bj",
+    "nom": "Agence Nationale de Normalisation, de Métrologie et du Contrôle Qualité",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://abssa.bj",
+    "nom": "ABSSA - Agence Béninoise de Sécurité Sanitaire des Aliments",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://sirat.bj",
+    "nom": "SIRAT SA",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://sbee.bj",
+    "nom": "SBEE",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://soneb.bj",
+    "nom": "Soneb",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://pac.bj",
+    "nom": "Port Autonome de Cotonou",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://benincontrol.com",
+    "nom": "Bénin Control",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://beninterminal.com",
+    "nom": "Bénin Terminal",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://sobemap.bj",
+    "nom": "SOBEMAP",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://benintourisme.bj",
+    "nom": "Bénin Tourisme",
+    "type": "Concours/Public"
+  },
+  {
+    "url": "https://canalolympia.com",
+    "nom": "Canal Olympia Bénin",
+    "type": "Emploi"
+  },
+  {
+    "url": "https://unstim.bj",
+    "nom": "UNSTIM",
+    "type": "Bourse/Stage"
+  },
+  {
+    "url": "https://una.bj",
+    "nom": "UNA - Université Nationale d’Agriculture",
+    "type": "Bourse/Stage"
+  }
 ]
