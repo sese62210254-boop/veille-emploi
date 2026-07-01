@@ -25,14 +25,14 @@ import os
 
 def analyser_avec_gemini(titre: str, texte: str) -> dict:
     import time
-    time.sleep(4.5) # Limite de l'API Gemini : 15 requetes / minute
+    # time.sleep(4.5) # Limite de l'API Gemini : 15 requetes / minute
     """Analyse le texte via l'API Gemini 1.5 Flash pour determiner s'il s'agit d'une opportunite et extraire les metadonnees."""
     api_key = os.environ.get('GEMINI_API_KEY')
     if not api_key:
         logger.error("GEMINI_API_KEY non definie. Filtrage IA desactive.")
         return {"est_opportunite": True, "categorie": "Emploi", "resume": texte[:200], "date_limite": "Voir sur le site"}
     
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
     
     prompt = f"""
 Tu es un assistant IA spécialisé dans le recrutement et les financements au Bénin et en Afrique.
